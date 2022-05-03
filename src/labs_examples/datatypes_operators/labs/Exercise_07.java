@@ -1,5 +1,6 @@
 package labs_examples.datatypes_operators.labs;
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 /**
@@ -24,6 +25,9 @@ public class Exercise_07 {
         int days = scanner.nextInt();
 
         // write completed code here
+
+        int seconds = days * 3600;
+        System.out.println(seconds);
 
     }
 }

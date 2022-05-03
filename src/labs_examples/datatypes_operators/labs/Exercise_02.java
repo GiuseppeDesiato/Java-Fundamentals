@@ -25,5 +25,18 @@ public class Exercise_02 {
 
         // write code here
 
+        //widening
+        int i = 10;
+        double d = i;
+        System.out.println(d);
+
+        //narrowing
+        double d2 = 10.5;
+        int i2 = (int) d2;
+        System.out.println(i2);
+
+        // The information lost is in the narrowing conversion.
+
+
     }
 }
