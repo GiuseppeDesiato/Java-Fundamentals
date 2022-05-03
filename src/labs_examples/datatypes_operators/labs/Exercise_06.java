@@ -13,17 +13,16 @@ public class Exercise_06 {
     public static void main(String[] args) {
 
         // write code here
-        float pi = 3.14f;
         float radius = 3.14f;
         int height = 5;
 
         //volume
-        float area = (float) (Math.pow(radius, 2) * pi);
+        float area = (float) (Math.pow(radius, 2) * Math.PI);
         float volume = area * height;
         System.out.println(volume);
 
         //surface area
-        float surface = (float) (2 * pi * Math.pow(radius, 2) + 2 * pi * radius * height);
+        float surface = (float) (2 * Math.PI * Math.pow(radius, 2) + 2 * Math.PI * radius * height);
         System.out.println(surface);
 
 

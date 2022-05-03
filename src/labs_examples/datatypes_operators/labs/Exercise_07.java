@@ -26,7 +26,7 @@ public class Exercise_07 {
 
         // write completed code here
 
-        int seconds = days * 3600;
+        int seconds = days * 3600 * 24;
         System.out.println(seconds);
 
     }
