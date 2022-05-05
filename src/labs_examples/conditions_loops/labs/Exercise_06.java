@@ -8,4 +8,18 @@ package labs_examples.conditions_loops.labs;
  */
 
 public class Exercise_06 {
+
+    public static void main(String[] args) {
+
+        int upperNum = 100;
+        int lowerNum = 0;
+
+        int sum = 0;
+
+        while(lowerNum <= upperNum){
+            sum += lowerNum;
+            lowerNum++;
+        }
+        System.out.println(sum);
+    }
 }
