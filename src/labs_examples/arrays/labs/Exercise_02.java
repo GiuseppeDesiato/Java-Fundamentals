@@ -1,5 +1,7 @@
 package labs_examples.arrays.labs;
 
+import java.util.Scanner;
+
 /**
  *  More labs_examples.arrays
  *
@@ -16,6 +18,14 @@ public class Exercise_02 {
 
         // write code here
 
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Please input a number between 0 and 9: ");
 
+        int index = sc.nextInt();
+        if(index < 10){
+            System.out.println(array[index]);
+        } else {
+            System.out.println("Wrong number.");
+        }
     }
 }
