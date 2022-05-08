@@ -1,5 +1,8 @@
 package labs_examples.arrays.labs;
 
+
+import java.util.ArrayList;
+
 /**
  *  ArrayLists
  *
@@ -10,4 +13,21 @@ package labs_examples.arrays.labs;
  *
  */
 public class Exercise_07 {
+
+    public static void main(String[] args) {
+
+        ArrayList<String> stringL = new ArrayList<>();
+
+        stringL.add("Banana");
+        stringL.add("Apple");
+        stringL.add("Peach");
+        stringL.add("Strawberry");
+
+        boolean isTrue = stringL.contains("Pear");
+        System.out.println(isTrue);
+
+        stringL.remove("Banana");
+        System.out.println(stringL.size());
+        System.out.println(stringL);
+    }
 }

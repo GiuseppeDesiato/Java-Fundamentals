@@ -24,6 +24,12 @@ public class Exercise_06 {
             // swap elements at indexes in array
             // you have two indices readily available for you to use "i" (which increments) and "nums.length"
             // you've also got this "temp" variable you can use to hold a value temporarily
+
+            temp = nums[i]; // temp is assigned the first hal of the array
+            nums[i] = nums[nums.length - 1 - i]; // nums[i] is assigned the reversed second half of the array
+            nums[nums.length - 1 - i] = temp; // nums[nums.length - 1 - i] is assigned the first hal of the array
+
+
         }
         System.out.print("Contents of array after for loop - ");
         // print each element of the array to verify reverse order
