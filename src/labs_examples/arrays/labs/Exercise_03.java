@@ -22,8 +22,8 @@ public class Exercise_03 {
         int[][] multiD = new int[5][5];
 
         int count = 3;
-        for(int i = 0; i < multiD.length; i++){
-            for(int x = 0; x < multiD[i].length; x++){
+        for(int i = 0; i < multiD.length; i++){   //row
+            for(int x = 0; x < multiD[i].length; x++){  //col
                 multiD[i][x] = count;
                 count+=3;
             }
