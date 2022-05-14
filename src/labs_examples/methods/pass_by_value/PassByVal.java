@@ -7,6 +7,7 @@ public class PassByVal {
         double b = 14;
 
         someOtherMethod(a,b);
+
     }
 
     public static void someOtherMethod(double a, double b){
