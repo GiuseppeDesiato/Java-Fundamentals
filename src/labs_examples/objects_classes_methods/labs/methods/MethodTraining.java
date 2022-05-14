@@ -1,6 +1,11 @@
 package labs_examples.objects_classes_methods.labs.methods;
 
 
+import com.sun.org.apache.bcel.internal.generic.ARETURN;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class MethodTraining {
 
     public static void main(String[] args) {
@@ -26,9 +31,9 @@ public class MethodTraining {
         newWeight(weightKg);
 
         Customer customer1 = new Customer(34, 80, "Eric");
-        System.out.println(customer1.toString());
+        System.out.println(customer1.toString()); //REDUNDANT ?
         addWeightToPerson(customer1);
-        System.out.println(customer1.toString());
+        System.out.println(customer1.toString()); //REDUNDANT ?
 
 
         //4)
@@ -44,9 +49,37 @@ public class MethodTraining {
         //6)
         int[] array = {12, 4, 578, 39, 30};
         int[] array2 = minMax(array);
-        for(int i = 0; i < array2.length; i++){
-            System.out.print(array2[i] + " ");
+        for (int val : array2) {
+            System.out.print(val + " ");
         }
+        System.out.println(" ");
+
+
+        //7)
+        int maxNum = 30;
+        int divisor1 = 2;
+        int divisor2 = 3;
+        System.out.println("the generated ArrayList is: " + populate(maxNum, divisor1, divisor2));
+
+
+
+        //8)
+
+        int[] origin = { 45, 3, 57, 23, 12, 9, 4};
+        reversArray(origin);
+        for(int j : origin){
+            System.out.print(j + " ");
+        }
+
+
+
+
+        //=============================================================================
+        //=============================================================================
+        //END MAIN
+        //=============================================================================
+        //=============================================================================
+
     }
 
     // 1) Demonstrate method overloading in this class
@@ -153,5 +186,37 @@ public class MethodTraining {
     //        In this method create an Integer ArrayList and populate it with each number between zero and maxNum that is
     //        divisible by both divisor1 and divisor2. Then return this ArrayList. After calling this method, print out the
     //        length of the returned list
+
+    public static ArrayList<Integer> populate(int maxNum, int divisor1, int divisor2){
+        ArrayList<Integer> zeroToMax = new ArrayList<>();
+
+        for(int i = 0; i < maxNum; i++){
+            if(i % divisor1 == 0 && i % divisor2 == 0)
+                zeroToMax.add(i);
+        }
+        return zeroToMax;
+    }
+
+    /*
+    8) Write a method that will reverse an array in place use only one extra temp variable. For this exercise you cannot
+    instantiate a second array. You must reverse the array in place using only one extra temp variable. Hint: this
+    variable is used to temporarily store individual values in the array
+     */
+
+    public static int[] reversArray(int[] origin){
+
+        int temp = 0;
+
+        for( int i = 0; i < (origin.length -1) /2; i++){
+
+            temp = origin[i];
+            origin [i] = origin[origin.length - 1 -i];
+            origin[origin.length - 1 -i] = temp;
+
+        }
+        return origin;
+    }
+
+
 
 }
