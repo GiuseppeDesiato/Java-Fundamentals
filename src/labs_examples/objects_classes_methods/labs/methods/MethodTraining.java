@@ -29,9 +29,10 @@ public class MethodTraining {
         int weightKg = 80;
         System.out.println("the old weight was: " + weightKg);
         newWeight(weightKg);
+        System.out.println("the new weight is: " + (weightKg));
 
         Customer customer1 = new Customer(34, 80, "Eric");
-        System.out.println(customer1.toString()); //REDUNDANT ?
+        System.out.println(customer1); //REDUNDANT ?
         addWeightToPerson(customer1);
         System.out.println(customer1.toString()); //REDUNDANT ?
 
@@ -98,7 +99,7 @@ public class MethodTraining {
 
     //pass by value
     public static void newWeight(int weightKg){
-        System.out.println("the new weight is: " + (weightKg - 5));
+        weightKg = weightKg -5;
     }
 
     // pass by reference
@@ -131,9 +132,12 @@ public class MethodTraining {
 
         int count = 0;
 
+        String vowels = "aeiou";
+
         for (int i = 0; i < str.length(); i++) {
             char ch = str.charAt(i);
-            if (ch != 'a' && ch != 'e' && ch != 'i' && ch != 'o' && ch != 'u') {
+            if (!vowels.contains(String.valueOf(ch))){
+            //if (ch != 'a' && ch != 'e' && ch != 'i' && ch != 'o' && ch != 'u') {
                 count++;
             }
 
