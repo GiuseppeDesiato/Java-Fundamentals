@@ -45,11 +45,9 @@ class Turbine{
     public Turbine(int turbineNum) {
         this.turbineNum = turbineNum;
     }
-
     public int getTurbineNum() {
         return turbineNum;
     }
-
     public void setTurbineNum(int turbineNum) {
         this.turbineNum = turbineNum;
     }
@@ -70,10 +68,10 @@ class Seats{
         this.rows = rows;
     }
 
+
     public int getRows() {
         return rows;
     }
-
     public void setRows(int rows) {
         this.rows = rows;
     }
@@ -94,10 +92,10 @@ class Speed{
         this.speedVal = speedVal;
     }
 
+
     public double getSpeedVal() {
         return speedVal;
     }
-
     public void setSpeedVal(double speedVal) {
         this.speedVal = speedVal;
     }
@@ -118,10 +116,10 @@ class Color{
         this.color = color;
     }
 
+
     public String getColor() {
         return color;
     }
-
     public void setColor(String color) {
         this.color = color;
     }
