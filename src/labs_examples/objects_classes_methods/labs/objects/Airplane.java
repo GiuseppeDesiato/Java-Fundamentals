@@ -32,8 +32,11 @@ public class Airplane {
         System.out.println("The new color is: " + myColor.getColor());
         System.out.println(myColor.toString());
 
-        double fuelCapacity;
-        double currentFuelLevel;
+        double fuelCapacity = 100;
+        double currentFuelLevel = 87.5;
+
+        System.out.println("The plane has the fuel capacity of: " + fuelCapacity +
+                " gallons. And its current fuel capacity is of " + currentFuelLevel);
 
     }
 }
