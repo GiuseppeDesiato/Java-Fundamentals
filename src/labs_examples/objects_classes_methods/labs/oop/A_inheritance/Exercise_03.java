@@ -4,7 +4,8 @@ package labs_examples.objects_classes_methods.labs.oop.A_inheritance;
  * Why does the output print in the order it does?
  *
  * You answer:
- *
+ * The superclass constructor is called before the subclass constructor
+ * therefore there is a hierarchy of constructors to be respected.
  */
 
 class A_1 {
