@@ -4,10 +4,22 @@ public class TrailController {
 
     public static void main(String[] args) {
 
-        MountWachusett w = new MountWachusett();
+        LoopTrail loop = new LoopTrail(9.8, 3, 583);
+        WestSideTrail west = new WestSideTrail(4.3, 1.27, 286);
+        HarringtonTrail harr = new HarringtonTrail(4.8, 1.38, 251);
 
-        w.altitude(456.7);
-        w.numHours(4);
+        TrailDependency trail = new TrailDependency(loop);
+        trail.trailMethods();
+
+        trail.setTrekkingTrails(west);
+        trail.trailMethods();
+
+        trail.setTrekkingTrails(harr);
+        trail.trailMethods();
+
+
+
+
 
     }
 }
