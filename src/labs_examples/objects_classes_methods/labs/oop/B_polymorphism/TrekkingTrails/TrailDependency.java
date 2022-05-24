@@ -2,22 +2,15 @@ package labs_examples.objects_classes_methods.labs.oop.B_polymorphism.TrekkingTr
 
 public class TrailDependency {
 
-    Trails trekking;
+    Trail trekking;
 
-    public TrailDependency(Trails trekkingTrails) {
+    public TrailDependency(Trail trekkingTrails) {
         this.trekking = trekkingTrails;
     }
 
-    public void trailMethods(){
-        System.out.println("-------START-------");
-        trekking.accessible();
-        trekking.length();
-        trekking.altitude();
-        trekking.numHours(4);
-        System.out.println("--------END--------");
-    }
 
-    public void setTrekkingTrails(Trails trekkingTrails) {
+
+    public void setTrekkingTrails(Trail trekkingTrails) {
         this.trekking = trekkingTrails;
     }
 }

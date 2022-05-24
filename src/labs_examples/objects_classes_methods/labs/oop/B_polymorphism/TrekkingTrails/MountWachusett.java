@@ -1,6 +1,6 @@
 package labs_examples.objects_classes_methods.labs.oop.B_polymorphism.TrekkingTrails;
 
-public class MountWachusett implements Trails{
+public class MountWachusett implements Trail {
 
     private double length;
     private double hours;

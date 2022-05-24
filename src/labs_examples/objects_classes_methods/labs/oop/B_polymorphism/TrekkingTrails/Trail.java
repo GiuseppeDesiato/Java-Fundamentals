@@ -1,6 +1,6 @@
 package labs_examples.objects_classes_methods.labs.oop.B_polymorphism.TrekkingTrails;
 
-public interface Trails {
+public interface Trail {
 
     public boolean accessible();
     public void length();
