@@ -12,6 +12,25 @@ public class Hand { //this will hold hand data
         this.handValue = handValue;
     }
 
+    public Hand() {
+    }
+
+    public int handScore(){
+        int handScore = 0;
+        for(Card card : cards){
+            handScore += card.cardValue;
+        }
+        return handScore;
+    }
+
+    public boolean isAbove21(){
+        if (handScore() > 21) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public ArrayList<Card> getCards() {
         return cards;
     }

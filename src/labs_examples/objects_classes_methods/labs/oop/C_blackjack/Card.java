@@ -10,6 +10,9 @@ public class Card { //this will hold card data
         this.cardValue = cardValue;
     }
 
+    public Card(int suit, int cardValue) {
+    }
+
     public char[] getSuit() {
         return suit;
     }

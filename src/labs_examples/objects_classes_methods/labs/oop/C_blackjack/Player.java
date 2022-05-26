@@ -12,6 +12,14 @@ public class Player { //this will hold player info
         this.potValue = potValue;
     }
 
+    public boolean computerAi(){
+        if(hand.getHandValue() < 16){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public String getName() {
         return name;
     }
