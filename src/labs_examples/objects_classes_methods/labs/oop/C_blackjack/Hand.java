@@ -1,23 +1,27 @@
 package labs_examples.objects_classes_methods.labs.oop.C_blackjack;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Hand { //this will hold hand data
 
-    ArrayList<Card> cards;
+    ArrayList<Card> cardsInHand = new ArrayList<Card>();
     int handValue;
 
-    public Hand(ArrayList<Card> cards, int handValue) {
-        this.cards = cards;
+    public Hand(ArrayList<Card> cardsInHand, int handValue) {
+        this.cardsInHand = cardsInHand;
         this.handValue = handValue;
     }
 
     public Hand() {
     }
 
+    public Hand(Deck deck) {
+    }
+
     public int handScore(){
         int handScore = 0;
-        for(Card card : cards){
+        for(Card card : cardsInHand){
             handScore += card.cardValue;
         }
         return handScore;
@@ -31,12 +35,26 @@ public class Hand { //this will hold hand data
         }
     }
 
-    public ArrayList<Card> getCards() {
-        return cards;
+    public void printHand() {
+        for (Card card : cardsInHand) {
+            System.out.println(card.value() + " of " + Arrays.toString(card.suit));
+        }
     }
 
-    public void setCards(ArrayList<Card> cards) {
-        this.cards = cards;
+    @Override
+    public String toString() {
+        return "Hand{" +
+                "cards=" + cardsInHand +
+                ", handValue=" + handValue +
+                '}';
+    }
+
+    public ArrayList<Card> getCards() {
+        return cardsInHand;
+    }
+
+    public void setCards(ArrayList<Card> cardsInHand) {
+        this.cardsInHand = cardsInHand;
     }
 
     public int getHandValue() {
@@ -46,4 +64,5 @@ public class Hand { //this will hold hand data
     public void setHandValue(int handValue) {
         this.handValue = handValue;
     }
+
 }

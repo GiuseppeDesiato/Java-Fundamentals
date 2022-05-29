@@ -3,13 +3,19 @@ package labs_examples.objects_classes_methods.labs.oop.C_blackjack;
 public class Player { //this will hold player info
 
     String name;
+    Deck deck;
     Hand hand;
     int potValue; //the amount of money they have)
 
-    public Player(String name, Hand hand, int potValue) {
+    public Player(String name, Deck deck, Hand hand, int potValue) {
         this.name = name;
+        this.deck = deck;
         this.hand = hand;
         this.potValue = potValue;
+    }
+
+    public Player(String name) {
+        this.name = name;
     }
 
     public boolean computerAi(){
@@ -18,6 +24,17 @@ public class Player { //this will hold player info
         } else {
             return false;
         }
+    }
+
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "name='" + name + '\'' +
+                ", deck=" + deck +
+                ", hand=" + hand +
+                ", potValue=" + potValue +
+                '}';
     }
 
     public String getName() {
