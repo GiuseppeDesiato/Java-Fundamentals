@@ -19,11 +19,13 @@ public class BlackjackController {
         Player realPlayer = new Player(input);
         Player cpPlayer = new Player("Virtual_Player");
 
+        int currentBet = 0;
+        int totalMoney = 100;
+
         System.out.println("Hi " + input + "! Welcome to the BlackJack game.");
         System.out.println("You are going to play against " + cpPlayer.name);
+        System.out.println("Your budget is: " + totalMoney + "$");
         System.out.println(" ");
-
-        int totalMoney = 0;
 
         //creating the deck
         Deck playingDeck = new Deck();
@@ -37,14 +39,22 @@ public class BlackjackController {
         //you need to give two cards to the player
         playingDeck.deal(cpPlayer);
 
-        /*
-        System.out.print("Place a bet? y/n: ");
-        String answer = scanner.next().toLowerCase();
-        if (answer.equals("y")) {
-            totalMoney += realPlayer.placeBet(realPlayer);
-        }
-        */
 
+        while (true){
+            System.out.print("Place a bet? (y/n): ");
+            String answer1 = scanner.next().toLowerCase();
+
+            if (!(answer1.equals("y") || answer1.equals("n"))) {
+                System.out.println("Wrong answer. Please type 'y' or 'n'.");
+            }
+
+            else if (answer1.equals("y")) {
+                System.out.println("How much money do you want to bet?");
+                currentBet = scanner.nextInt();
+                realPlayer.placeBet(currentBet);
+                break;
+            }
+        }
 
         System.out.println(input + ", your current hand value is: ");
         realPlayer.hand.printHand();
@@ -55,14 +65,13 @@ public class BlackjackController {
         //real player's turn
         while (true) {
             System.out.println("Do you want another card? (y/n)");
-            String yesOrNo = scanner.nextLine().toLowerCase();
+            String answer2 = scanner.nextLine().toLowerCase();
             System.out.println(" ");
 
-
-            if (!(yesOrNo.equals("y") || yesOrNo.equals("n"))) {
+            if (!(answer2.equals("y") || answer2.equals("n"))) {
                 System.out.println("Wrong answer. Please type 'y' or 'n'.");
 
-            } else if (yesOrNo.equals("y")) {
+            } else if (answer2.equals("y")) {
                 playingDeck.deal(realPlayer);
                 System.out.println("Your current hand:");
                 realPlayer.hand.printHand();
@@ -74,7 +83,8 @@ public class BlackjackController {
                     System.out.println("Ok. Now is " + cpPlayer.name + "'s turn");
                     break;
                 }
-            } else if (yesOrNo.equals("n")) {
+
+            } else if (answer2.equals("n")) {
                 System.out.println("Ok. Now is " + cpPlayer.name + "'s turn");
                 break;
             }
@@ -96,11 +106,21 @@ public class BlackjackController {
                 System.out.println();
                 break;
 
-            } else if (cpPlayer.hand.handScore() == 21 || (cpPlayer.hand.handScore() > realPlayer.hand.handScore()
-                    && cpPlayer.hand.handScore() < 22)) {
+            } else if (cpPlayer.hand.handScore() > realPlayer.hand.handScore() && cpPlayer.hand.handScore() < 22) {
                 System.out.println("--------------------");
                 System.out.println(cpPlayer.name + " won!");
                 System.out.println("--------------------");
+                totalMoney -= currentBet;
+                System.out.println("You have " + totalMoney + "$");
+                System.out.println();
+                break;
+
+            } else if (cpPlayer.hand.handScore() < realPlayer.hand.handScore() && realPlayer.hand.handScore() > 21) {
+                System.out.println("--------------------");
+                System.out.println(cpPlayer.name + " won!");
+                System.out.println("--------------------");
+                totalMoney -= currentBet;
+                System.out.println("You have " + totalMoney + "$");
                 System.out.println();
                 break;
 
@@ -111,14 +131,22 @@ public class BlackjackController {
             System.out.println("--------");
             System.out.println("YOU WON!");
             System.out.println("--------");
+            totalMoney += currentBet;
+            System.out.println("You have " + totalMoney + "$");
+
         } else if (realPlayer.hand.handScore() > 21 && cpPlayer.hand.handScore() > 21) {
             System.out.println("-------------");
             System.out.println("YOU BOTH LOST.");
             System.out.println("-------------");
+            totalMoney -= currentBet;
+            System.out.println("You have " + totalMoney + "$");
+
         } else if ((cpPlayer.hand.handScore() == realPlayer.hand.handScore()) && cpPlayer.hand.handScore() < 22) {
             System.out.println("-------------");
             System.out.println("PUSH.");
             System.out.println("-------------");
+            totalMoney = currentBet / 2;
+            System.out.println("You have " + totalMoney + "$");
         }
     }
 }

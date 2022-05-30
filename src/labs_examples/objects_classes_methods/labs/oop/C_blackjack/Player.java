@@ -19,20 +19,20 @@ public class Player { //this will hold player info
     }
 
     public boolean computerAi(){
-        if(hand.getHandValue() < 16){
+        if(hand.handScore() < 16){
             return true;
         } else {
             return false;
         }
     }
 
-    public int placeBet(Player player) {
-        if (potValue >= 10) {
-            System.out.println(player.name + "plays 10$.");
-            potValue -= 10;
-            return 10;
+    public int placeBet(int bet) {
+        if (potValue >= bet) {
+            System.out.println("You placed a bet for " + bet + "$");
+            potValue -= bet;
+            return bet;
         } else {
-            System.out.println(player.name + " has no more money.");
+            System.out.println("You have no more money");
             return 0;
         }
     }
