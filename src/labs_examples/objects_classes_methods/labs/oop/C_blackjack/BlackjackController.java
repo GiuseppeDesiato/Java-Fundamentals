@@ -12,6 +12,7 @@ public class BlackjackController {
 
     public static void playBlackJack() {
 
+
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
 
@@ -22,6 +23,7 @@ public class BlackjackController {
         System.out.println("You are going to play against " + cpPlayer.name);
         System.out.println(" ");
 
+        int totalMoney = 0;
         //creating the deck
         Deck playingDeck = new Deck();
         playingDeck.populateDeck();
@@ -34,6 +36,15 @@ public class BlackjackController {
         //you need to give two cards to the player
         playingDeck.deal(cpPlayer);
 
+        /*
+        System.out.print("Place a bet? y/n: ");
+        String answer = scanner.next().toLowerCase();
+        if (answer.equals("y")) {
+            totalMoney += realPlayer.placeBet(realPlayer);
+        }
+        */
+
+
         System.out.println(input + ", your current hand value is: ");
         realPlayer.hand.printHand();
         System.out.println("Your total score is: " + realPlayer.hand.handScore());
@@ -45,6 +56,7 @@ public class BlackjackController {
             System.out.println("Do you want another card? (y/n)");
             String yesOrNo = scanner.nextLine().toLowerCase();
             System.out.println(" ");
+
 
             if (!(yesOrNo.equals("y") || yesOrNo.equals("n"))) {
                 System.out.println("Wrong answer. Please type 'y' or 'n'.");
@@ -84,25 +96,27 @@ public class BlackjackController {
                 break;
 
             } else if (cpPlayer.hand.handScore() == 21 || (cpPlayer.hand.handScore() > realPlayer.hand.handScore()
-            && cpPlayer.hand.handScore() < 22)) {
+                    && cpPlayer.hand.handScore() < 22)) {
+                System.out.println("--------------------");
                 System.out.println(cpPlayer.name + " won!");
-                System.out.println();
-                break;
-
-            } else if ((cpPlayer.hand.handScore() == realPlayer.hand.handScore()) && cpPlayer.hand.handScore() < 22) {
-                System.out.println("PUSH!");
+                System.out.println("--------------------");
                 System.out.println();
                 break;
 
             }
         }
-        if (realPlayer.hand.handScore() < 22 && cpPlayer.hand.handScore() > 21){
+        
+        if (realPlayer.hand.handScore() < 22 && cpPlayer.hand.handScore() > 21) {
             System.out.println("--------");
             System.out.println("YOU WON!");
             System.out.println("--------");
         } else if (realPlayer.hand.handScore() > 21 && cpPlayer.hand.handScore() > 21) {
             System.out.println("-------------");
-            System.out.println("You both lost");
+            System.out.println("YOU BOTH LOST.");
+            System.out.println("-------------");
+        } else if ((cpPlayer.hand.handScore() == realPlayer.hand.handScore()) && cpPlayer.hand.handScore() < 22) {
+            System.out.println("-------------");
+            System.out.println("PUSH.");
             System.out.println("-------------");
         }
     }

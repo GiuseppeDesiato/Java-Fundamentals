@@ -5,7 +5,7 @@ public class Player { //this will hold player info
     String name;
     Deck deck;
     Hand hand;
-    int potValue; //the amount of money they have)
+    int potValue = 100;
 
     public Player(String name, Deck deck, Hand hand, int potValue) {
         this.name = name;
@@ -23,6 +23,17 @@ public class Player { //this will hold player info
             return true;
         } else {
             return false;
+        }
+    }
+
+    public int placeBet(Player player) {
+        if (potValue >= 10) {
+            System.out.println(player.name + "plays 10$.");
+            potValue -= 10;
+            return 10;
+        } else {
+            System.out.println(player.name + " has no more money.");
+            return 0;
         }
     }
 
