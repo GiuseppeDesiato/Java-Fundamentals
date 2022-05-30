@@ -24,6 +24,7 @@ public class BlackjackController {
         System.out.println(" ");
 
         int totalMoney = 0;
+
         //creating the deck
         Deck playingDeck = new Deck();
         playingDeck.populateDeck();
@@ -105,7 +106,7 @@ public class BlackjackController {
 
             }
         }
-        
+
         if (realPlayer.hand.handScore() < 22 && cpPlayer.hand.handScore() > 21) {
             System.out.println("--------");
             System.out.println("YOU WON!");
