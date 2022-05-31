@@ -1,8 +1,5 @@
 package labs_examples.objects_classes_methods.labs.oop.C_blackjack;
 
-import org.omg.PortableInterceptor.ServerRequestInfo;
-
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class BlackjackController {
@@ -44,8 +41,7 @@ public class BlackjackController {
         playingDeck.deal(cpPlayer); // give two cards to the computer
         playingDeck.deal(cpPlayer);
 
-        while(true) {
-            
+
             while (true) {
                 System.out.print("Place a bet? (y/n): ");
                 String answer1 = scanner.next().toLowerCase();
@@ -145,11 +141,5 @@ public class BlackjackController {
                 System.out.println("You have " + totalMoney + "$");
             }
 
-        if (totalMoney < 5){
-            System.out.println("You do not have enough money.");
-        }
-        break;
-
         }
     }
-}
