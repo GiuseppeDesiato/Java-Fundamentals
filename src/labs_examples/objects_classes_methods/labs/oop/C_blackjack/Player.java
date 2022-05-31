@@ -19,11 +19,7 @@ public class Player { //this will hold player info
     }
 
     public boolean computerAi(){
-        if(hand.handScore() < 16){
-            return true;
-        } else {
-            return false;
-        }
+        return hand.handScore() <= 16;
     }
 
     public int placeBet(int bet) {

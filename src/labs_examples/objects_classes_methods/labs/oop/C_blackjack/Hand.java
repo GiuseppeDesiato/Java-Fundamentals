@@ -19,10 +19,15 @@ public class Hand { //this will hold hand data
     public Hand(Deck deck) {
     }
 
+    //add ACE scoring
     public int handScore(){
         int handScore = 0;
         for(Card card : cardsInHand){
-            handScore += card.cardValue;
+            if(card.cardValue >= 10){
+                handScore += 10;
+            } else {
+                handScore += card.cardValue;
+            }
         }
         return handScore;
     }

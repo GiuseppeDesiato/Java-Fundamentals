@@ -1,5 +1,8 @@
 package labs_examples.objects_classes_methods.labs.oop.C_blackjack;
 
+import org.omg.PortableInterceptor.ServerRequestInfo;
+
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class BlackjackController {
@@ -35,118 +38,118 @@ public class BlackjackController {
         realPlayer.hand = new Hand(playingDeck);
         cpPlayer.hand = new Hand(playingDeck);
 
+        playingDeck.deal(realPlayer); // give two cards to the user
         playingDeck.deal(realPlayer);
-        //you need to give two cards to the player
+
+        playingDeck.deal(cpPlayer); // give two cards to the computer
         playingDeck.deal(cpPlayer);
 
+        while(true) {
+            
+            while (true) {
+                System.out.print("Place a bet? (y/n): ");
+                String answer1 = scanner.next().toLowerCase();
 
-        while (true){
-            System.out.print("Place a bet? (y/n): ");
-            String answer1 = scanner.next().toLowerCase();
-
-            if (!(answer1.equals("y") || answer1.equals("n"))) {
-                System.out.println("Wrong answer. Please type 'y' or 'n'.");
+                if (!(answer1.equals("y") || answer1.equals("n"))) {
+                    System.out.println("Wrong answer. Please type 'y' or 'n'.");
+                } else if (answer1.equals("y")) {
+                    System.out.println("How much money do you want to bet?");
+                    if (!scanner.hasNextInt()) {
+                        System.out.println("Wrong answer. Type a number");
+                    }
+                    currentBet = scanner.nextInt();
+                    scanner.nextLine();
+                    realPlayer.placeBet(currentBet);
+                    break;
+                }
             }
 
-            else if (answer1.equals("y")) {
-                System.out.println("How much money do you want to bet?");
-                currentBet = scanner.nextInt();
-                realPlayer.placeBet(currentBet);
-                break;
-            }
-        }
-
-        System.out.println(input + ", your current hand value is: ");
-        realPlayer.hand.printHand();
-        System.out.println("Your total score is: " + realPlayer.hand.handScore());
-        System.out.println(" ");
-
-
-        //real player's turn
-        while (true) {
-            System.out.println("Do you want another card? (y/n)");
-            String answer2 = scanner.nextLine().toLowerCase();
+            System.out.println(input + ", your current hand value is: ");
+            realPlayer.hand.printHand();
+            System.out.println("Your total score is: " + realPlayer.hand.handScore());
             System.out.println(" ");
 
-            if (!(answer2.equals("y") || answer2.equals("n"))) {
-                System.out.println("Wrong answer. Please type 'y' or 'n'.");
 
-            } else if (answer2.equals("y")) {
-                playingDeck.deal(realPlayer);
-                System.out.println("Your current hand:");
-                realPlayer.hand.printHand();
-                System.out.println("your total is: " + realPlayer.hand.handScore());
+            //real player's turn
+            while (true) {
+                System.out.println("Do you want another card? (y/n)");
+                String answer2 = scanner.nextLine().toLowerCase();
+                System.out.println(" ");
 
-                if (realPlayer.hand.handScore() > 21) {
-                    System.out.println("Hey " + input + " you went above 21. You lost!");
-                    System.out.println();
+                if (!(answer2.equals("y") || answer2.equals("n"))) {
+                    System.out.println("Wrong answer. Please type 'y' or 'n'.");
+
+                } else if (answer2.equals("y")) {
+                    playingDeck.deal(realPlayer);
+                    System.out.println("Your current hand:");
+                    realPlayer.hand.printHand();
+                    System.out.println("your total is: " + realPlayer.hand.handScore());
+
+                    if (realPlayer.hand.handScore() > 21) {
+                        System.out.println("Hey " + input + " you went above 21. You lost!");
+                        System.out.println();
+                        System.out.println("Ok. Now is " + cpPlayer.name + "'s turn");
+                        break;
+                    }
+
+                } else if (answer2.equals("n")) {
                     System.out.println("Ok. Now is " + cpPlayer.name + "'s turn");
                     break;
                 }
-
-            } else if (answer2.equals("n")) {
-                System.out.println("Ok. Now is " + cpPlayer.name + "'s turn");
-                break;
             }
-        }
-        System.out.println("..." + cpPlayer.name + "...");
-        System.out.println(" ");
-
-
-        // computer's turn
-        while (cpPlayer.computerAi()) {
-            playingDeck.deal(cpPlayer);
-            System.out.println(cpPlayer.name + "'s hand is: ");
-            cpPlayer.hand.printHand();
-            System.out.println(cpPlayer.name + "'s total is: " + cpPlayer.hand.handScore());
+            System.out.println("..." + cpPlayer.name + "...");
             System.out.println(" ");
 
-            if (cpPlayer.hand.handScore() > 21) {
-                System.out.println(cpPlayer.name + " lost!");
-                System.out.println();
-                break;
 
-            } else if (cpPlayer.hand.handScore() > realPlayer.hand.handScore() && cpPlayer.hand.handScore() < 22) {
-                System.out.println("--------------------");
-                System.out.println(cpPlayer.name + " won!");
-                System.out.println("--------------------");
-                totalMoney -= currentBet;
+            // computer's turn
+            while (cpPlayer.computerAi()) {
+                playingDeck.deal(cpPlayer);
+                System.out.println(cpPlayer.name + "'s hand is: ");
+                cpPlayer.hand.printHand();
+                System.out.println(cpPlayer.name + "'s total is: " + cpPlayer.hand.handScore());
+                System.out.println(" ");
+
+                String message = " ";
+
+                //write a helper method
+
+                if (realPlayer.hand.handScore() < 22 && (cpPlayer.hand.handScore() > 21 || cpPlayer.hand.handScore() < 21)) {
+                    message = "YOU WON!";
+                    totalMoney += currentBet;
+
+                } else if (realPlayer.hand.handScore() > 21 && cpPlayer.hand.handScore() > 21) {
+                    message = "YOU BOTH LOST.";
+                    totalMoney -= currentBet;
+
+                } else if ((cpPlayer.hand.handScore() == realPlayer.hand.handScore()) && cpPlayer.hand.handScore() < 22) {
+                    message = "PUSH";
+                    totalMoney = currentBet / 2;
+
+                } else if (cpPlayer.hand.handScore() > 21) {
+                    message = cpPlayer.name + " lost!";
+                    totalMoney += currentBet;
+
+                } else if (cpPlayer.hand.handScore() > realPlayer.hand.handScore() && cpPlayer.hand.handScore() < 22) {
+                    message = cpPlayer.name + " won!";
+                    totalMoney -= currentBet;
+
+                } else if (cpPlayer.hand.handScore() < realPlayer.hand.handScore() && realPlayer.hand.handScore() > 21) {
+                    message = cpPlayer.name + " won!";
+                    totalMoney -= currentBet;
+
+                }
+
+                System.out.println("-------------");
+                System.out.println(message);
+                System.out.println("-------------");
                 System.out.println("You have " + totalMoney + "$");
-                System.out.println();
-                break;
-
-            } else if (cpPlayer.hand.handScore() < realPlayer.hand.handScore() && realPlayer.hand.handScore() > 21) {
-                System.out.println("--------------------");
-                System.out.println(cpPlayer.name + " won!");
-                System.out.println("--------------------");
-                totalMoney -= currentBet;
-                System.out.println("You have " + totalMoney + "$");
-                System.out.println();
-                break;
-
             }
+
+        if (totalMoney < 5){
+            System.out.println("You do not have enough money.");
         }
+        break;
 
-        if (realPlayer.hand.handScore() < 22 && cpPlayer.hand.handScore() > 21) {
-            System.out.println("--------");
-            System.out.println("YOU WON!");
-            System.out.println("--------");
-            totalMoney += currentBet;
-            System.out.println("You have " + totalMoney + "$");
-
-        } else if (realPlayer.hand.handScore() > 21 && cpPlayer.hand.handScore() > 21) {
-            System.out.println("-------------");
-            System.out.println("YOU BOTH LOST.");
-            System.out.println("-------------");
-            totalMoney -= currentBet;
-            System.out.println("You have " + totalMoney + "$");
-
-        } else if ((cpPlayer.hand.handScore() == realPlayer.hand.handScore()) && cpPlayer.hand.handScore() < 22) {
-            System.out.println("-------------");
-            System.out.println("PUSH.");
-            System.out.println("-------------");
-            totalMoney = currentBet / 2;
-            System.out.println("You have " + totalMoney + "$");
         }
     }
 }
