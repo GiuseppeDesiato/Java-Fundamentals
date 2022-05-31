@@ -38,8 +38,7 @@ public class BlackjackController {
         playingDeck.deal(realPlayer); // give two cards to the user
         playingDeck.deal(realPlayer);
 
-        playingDeck.deal(cpPlayer); // give two cards to the computer
-        playingDeck.deal(cpPlayer);
+        playingDeck.deal(cpPlayer); //  give only one card, because the second card is given inside cpPLayer while loop
 
 
             while (true) {
@@ -50,9 +49,6 @@ public class BlackjackController {
                     System.out.println("Wrong answer. Please type 'y' or 'n'.");
                 } else if (answer1.equals("y")) {
                     System.out.println("How much money do you want to bet?");
-                    if (!scanner.hasNextInt()) {
-                        System.out.println("Wrong answer. Type a number");
-                    }
                     currentBet = scanner.nextInt();
                     scanner.nextLine();
                     realPlayer.placeBet(currentBet);
@@ -98,48 +94,58 @@ public class BlackjackController {
 
 
             // computer's turn
-            while (cpPlayer.computerAi()) {
+            while (true) {
                 playingDeck.deal(cpPlayer);
                 System.out.println(cpPlayer.name + "'s hand is: ");
                 cpPlayer.hand.printHand();
                 System.out.println(cpPlayer.name + "'s total is: " + cpPlayer.hand.handScore());
                 System.out.println(" ");
 
-                String message = " ";
-
-                //write a helper method
-
-                if (realPlayer.hand.handScore() < 22 && (cpPlayer.hand.handScore() > 21 || cpPlayer.hand.handScore() < 21)) {
-                    message = "YOU WON!";
-                    totalMoney += currentBet;
-
-                } else if (realPlayer.hand.handScore() > 21 && cpPlayer.hand.handScore() > 21) {
-                    message = "YOU BOTH LOST.";
-                    totalMoney -= currentBet;
-
-                } else if ((cpPlayer.hand.handScore() == realPlayer.hand.handScore()) && cpPlayer.hand.handScore() < 22) {
-                    message = "PUSH";
-                    totalMoney = currentBet / 2;
-
-                } else if (cpPlayer.hand.handScore() > 21) {
-                    message = cpPlayer.name + " lost!";
-                    totalMoney += currentBet;
-
-                } else if (cpPlayer.hand.handScore() > realPlayer.hand.handScore() && cpPlayer.hand.handScore() < 22) {
-                    message = cpPlayer.name + " won!";
-                    totalMoney -= currentBet;
-
-                } else if (cpPlayer.hand.handScore() < realPlayer.hand.handScore() && realPlayer.hand.handScore() > 21) {
-                    message = cpPlayer.name + " won!";
-                    totalMoney -= currentBet;
-
+                if (cpPlayer.hand.handScore() > 15){
+                    break;
                 }
 
-                System.out.println("-------------");
-                System.out.println(message);
-                System.out.println("-------------");
-                System.out.println("You have " + totalMoney + "$");
             }
+
+        String message = " ";
+
+        //write a helper method
+        if (realPlayer.hand.handScore() < 22 && (cpPlayer.hand.handScore() > 21 || cpPlayer.hand.handScore() < realPlayer.hand.handScore())) {
+            message = "YOU WON!";
+            totalMoney += currentBet;
+
+
+        } else if (realPlayer.hand.handScore() > 21 && cpPlayer.hand.handScore() > 21) {
+            message = "YOU BOTH LOST.";
+            totalMoney -= currentBet;
+
+
+        } else if ((cpPlayer.hand.handScore() == realPlayer.hand.handScore()) && cpPlayer.hand.handScore() < 22) {
+            message = "PUSH";
+            totalMoney += (currentBet / 2);
+
+
+        } else if (cpPlayer.hand.handScore() > 21) {
+            message = cpPlayer.name + " lost!";
+
+
+        } else if (cpPlayer.hand.handScore() > realPlayer.hand.handScore() && cpPlayer.hand.handScore() < 22) {
+            message = cpPlayer.name + " won!";
+            totalMoney -= currentBet;
+
+
+        } else if (cpPlayer.hand.handScore() < realPlayer.hand.handScore() && realPlayer.hand.handScore() > 21) {
+            message = cpPlayer.name + " won!";
+            totalMoney -= currentBet;
+
+
+        }
+
+        System.out.println("-------------");
+        System.out.println(message);
+        System.out.println("-------------");
+        System.out.println("You have " + totalMoney + "$");
+        System.out.println(" ");
 
         }
     }
