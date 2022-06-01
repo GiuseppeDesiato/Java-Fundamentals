@@ -6,11 +6,8 @@ public class BlackjackController {
 
     public static void main(String[] args) {
 
-        BlackjackController mainController = new BlackjackController();
-
         System.out.println("Player name: ");
         playBlackJack();
-
     }
 
     public static void playBlackJack() {
