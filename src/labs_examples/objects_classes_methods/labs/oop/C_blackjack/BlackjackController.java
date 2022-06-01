@@ -49,13 +49,26 @@ public class BlackjackController {
 
                 if (!(answer1.equals("y") || answer1.equals("n"))) {
                     System.out.println("Wrong answer. Please type 'y' or 'n'.");
+
                 } else if (answer1.equals("y")) {
+
                     System.out.println("How much money do you want to bet?");
+
+                    while (!scanner.hasNextInt()) {
+                            scanner.next();
+                            System.out.println("Wrong answer. Please insert a number.");
+
+                    }
                     currentBet = scanner.nextInt();
                     scanner.nextLine();
                     realPlayer.placeBet(currentBet);
-                    break;
+
+                } else {
+                    System.out.println(" ");
+                    System.out.println("Ok " + input + ". Bye bye.");
+                    return;
                 }
+                break;
             }
 
             System.out.println(input + ", your current hand value is: ");
@@ -86,7 +99,7 @@ public class BlackjackController {
                         break;
                     }
 
-                } else if (answer2.equals("n")) {
+                } else {
                     System.out.println("Ok. Now is " + cpPlayer.name + "'s turn");
                     break;
                 }
