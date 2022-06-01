@@ -6,8 +6,11 @@ public class BlackjackController {
 
     public static void main(String[] args) {
 
+        BlackjackController mainController = new BlackjackController();
+
         System.out.println("Player name: ");
         playBlackJack();
+
     }
 
     public static void playBlackJack() {
@@ -40,6 +43,8 @@ public class BlackjackController {
 
         playingDeck.deal(cpPlayer); //  give only one card, because the second card is given inside cpPLayer while loop
 
+        // big loop, for playing the game consecutively till the user has money.
+        while(!realPlayer.noMoney(totalMoney)){
 
             while (true) {
                 System.out.print("Place a bet? (y/n): ");
@@ -107,39 +112,32 @@ public class BlackjackController {
 
             }
 
-        String message = " ";
+            String message = " ";
 
-        //write a helper method
-        if (realPlayer.hand.handScore() < 22 && (cpPlayer.hand.handScore() > 21 || cpPlayer.hand.handScore() < realPlayer.hand.handScore())) {
-            message = "YOU WON!";
-            totalMoney += currentBet;
+            //write a helper method
+            if (realPlayer.hand.handScore() < 22 && (cpPlayer.hand.handScore() > 21 || cpPlayer.hand.handScore() < realPlayer.hand.handScore())) {
+                message = "YOU WON!";
+                totalMoney += currentBet;
 
+            } else if (realPlayer.hand.handScore() > 21 && cpPlayer.hand.handScore() > 21) {
+                message = "YOU BOTH LOST.";
+                totalMoney -= currentBet;
 
-        } else if (realPlayer.hand.handScore() > 21 && cpPlayer.hand.handScore() > 21) {
-            message = "YOU BOTH LOST.";
-            totalMoney -= currentBet;
+            } else if ((cpPlayer.hand.handScore() == realPlayer.hand.handScore()) && cpPlayer.hand.handScore() < 22) {
+                message = "PUSH";
+                totalMoney += (currentBet / 2);
 
+            } else if (cpPlayer.hand.handScore() > 21) {
+                message = cpPlayer.name + " lost!";
 
-        } else if ((cpPlayer.hand.handScore() == realPlayer.hand.handScore()) && cpPlayer.hand.handScore() < 22) {
-            message = "PUSH";
-            totalMoney += (currentBet / 2);
+            } else if (cpPlayer.hand.handScore() > realPlayer.hand.handScore() && cpPlayer.hand.handScore() < 22) {
+                message = cpPlayer.name + " won!";
+                totalMoney -= currentBet;
 
-
-        } else if (cpPlayer.hand.handScore() > 21) {
-            message = cpPlayer.name + " lost!";
-
-
-        } else if (cpPlayer.hand.handScore() > realPlayer.hand.handScore() && cpPlayer.hand.handScore() < 22) {
-            message = cpPlayer.name + " won!";
-            totalMoney -= currentBet;
-
-
-        } else if (cpPlayer.hand.handScore() < realPlayer.hand.handScore() && realPlayer.hand.handScore() > 21) {
-            message = cpPlayer.name + " won!";
-            totalMoney -= currentBet;
-
-
-        }
+            } else if (cpPlayer.hand.handScore() < realPlayer.hand.handScore() && realPlayer.hand.handScore() > 21) {
+                message = cpPlayer.name + " won!";
+                totalMoney -= currentBet;
+            }
 
         System.out.println("-------------");
         System.out.println(message);
@@ -147,5 +145,20 @@ public class BlackjackController {
         System.out.println("You have " + totalMoney + "$");
         System.out.println(" ");
 
+
+        //clear hands and give new cards
+        realPlayer.hand.cardsInHand.clear();
+        playingDeck.deal(realPlayer);
+        playingDeck.deal(realPlayer);
+        cpPlayer.hand.cardsInHand.clear();
+        playingDeck.deal(cpPlayer);
+
+
+        if (realPlayer.noMoney(totalMoney)){
+            System.out.println("You do not have any more money! Ciao.");
         }
+
+        }
+
     }
+}

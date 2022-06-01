@@ -18,8 +18,12 @@ public class Player { //this will hold player info
         this.name = name;
     }
 
-    public boolean computerAi(){
-        return hand.handScore() <= 16;
+    public Player() {
+
+    }
+
+    public boolean noMoney(int amountOfMoney){
+        return amountOfMoney < 1;
     }
 
     public int placeBet(int bet) {
