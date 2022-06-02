@@ -1,5 +1,7 @@
 package labs_examples.objects_classes_methods.labs.oop.C_blackjack;
 
+import sun.lwawt.PlatformEventNotifier;
+
 import java.util.Scanner;
 
 public class Player { //this will hold player info
@@ -8,14 +10,18 @@ public class Player { //this will hold player info
     Deck deck;
     Hand hand;
     int potValue;
+    String message;
+    int currentBet;
 
     Scanner scanner = new Scanner(System.in);
 
-    public Player(String name, Deck deck, Hand hand, int potValue) {
+    public Player(String name, Deck deck, Hand hand, int potValue, String message, int currentBet) {
         this.name = name;
         this.deck = deck;
         this.hand = hand;
         this.potValue = potValue;
+        this.message = message;
+        this.currentBet = currentBet;
     }
 
     public Player(String name) {
@@ -54,6 +60,32 @@ public class Player { //this will hold player info
 
         }
         return 0;
+    }
+
+    public String whoWon(Player realPlayer, Player cpPlayer){
+
+        message = " ";
+
+        if (realPlayer.hand.handScore() < 22 && (cpPlayer.hand.handScore() > 21 || cpPlayer.hand.handScore() < realPlayer.hand.handScore())) {
+            return message = "YOU WON!";
+
+        } else if (realPlayer.hand.handScore() > 21 && cpPlayer.hand.handScore() > 21) {
+            return message = "YOU BOTH LOST.";
+
+        } else if ((cpPlayer.hand.handScore() == realPlayer.hand.handScore()) && cpPlayer.hand.handScore() < 22) {
+            return message = "PUSH";
+
+        } else if (cpPlayer.hand.handScore() > 21) {
+            return message = cpPlayer.name + " lost!";
+
+        } else if (cpPlayer.hand.handScore() > realPlayer.hand.handScore() && cpPlayer.hand.handScore() < 22) {
+            return message = cpPlayer.name + " won!";
+
+        } else if (cpPlayer.hand.handScore() < realPlayer.hand.handScore() && realPlayer.hand.handScore() > 21) {
+            return message = cpPlayer.name + " won!";
+        }
+
+        return null;
     }
 
 

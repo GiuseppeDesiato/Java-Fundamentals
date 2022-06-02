@@ -124,36 +124,20 @@ public class BlackjackController {
 
             }
 
-            String message = " ";
+            String result = realPlayer.whoWon(realPlayer, cpPlayer);
 
-            //write a helper method
-            if (realPlayer.hand.handScore() < 22 && (cpPlayer.hand.handScore() > 21 || cpPlayer.hand.handScore() < realPlayer.hand.handScore())) {
-                message = "YOU WON!";
+            System.out.println("-------------");
+            System.out.println(realPlayer.whoWon(realPlayer, cpPlayer));
+            System.out.println("-------------");
+            if (result.equals("YOU WON!")){
                 realPlayer.potValue += currentBet;
-
-            } else if (realPlayer.hand.handScore() > 21 && cpPlayer.hand.handScore() > 21) {
-                message = "YOU BOTH LOST.";
+            } else if (result.equals("YOU BOTH LOST.")){
                 realPlayer.potValue -= currentBet;
-
-            } else if ((cpPlayer.hand.handScore() == realPlayer.hand.handScore()) && cpPlayer.hand.handScore() < 22) {
-                message = "PUSH";
+            } else if (result.equals("PUSH")){
                 realPlayer.potValue += (currentBet / 2);
-
-            } else if (cpPlayer.hand.handScore() > 21) {
-                message = cpPlayer.name + " lost!";
-
-            } else if (cpPlayer.hand.handScore() > realPlayer.hand.handScore() && cpPlayer.hand.handScore() < 22) {
-                message = cpPlayer.name + " won!";
-                realPlayer.potValue -= currentBet;
-
-            } else if (cpPlayer.hand.handScore() < realPlayer.hand.handScore() && realPlayer.hand.handScore() > 21) {
-                message = cpPlayer.name + " won!";
+            } else if (result.equals(cpPlayer.name + " won!")){
                 realPlayer.potValue -= currentBet;
             }
-
-            System.out.println("-------------");
-            System.out.println(message);
-            System.out.println("-------------");
             System.out.println("You have " + realPlayer.potValue + "$");
             System.out.println(" ");
 
@@ -169,8 +153,6 @@ public class BlackjackController {
             if (realPlayer.noMoney(realPlayer.potValue)){
                 System.out.println("You do not have any more money! Ciao.");
             }
-
         }
-
     }
 }
