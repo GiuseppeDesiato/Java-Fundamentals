@@ -6,6 +6,8 @@ public class BlackjackController {
 
     public static void main(String[] args) {
 
+        BlackjackController controller = new BlackjackController();
+
         System.out.println("Player name: ");
         playBlackJack();
     }
@@ -20,11 +22,11 @@ public class BlackjackController {
         Player cpPlayer = new Player("Virtual_Player");
 
         int currentBet = 0;
-        int totalMoney = 100;
+        realPlayer.potValue = 200;
 
         System.out.println("Hi " + input + "! Welcome to the BlackJack game.");
         System.out.println("You are going to play against " + cpPlayer.name);
-        System.out.println("Your budget is: " + totalMoney + "$");
+        System.out.println("Your budget is: " + realPlayer.potValue + "$");
         System.out.println(" ");
 
         //creating the deck
@@ -41,7 +43,7 @@ public class BlackjackController {
         playingDeck.deal(cpPlayer); //  give only one card, because the second card is given inside cpPLayer while loop
 
         // big loop, for playing the game consecutively till the user has money.
-        while(!realPlayer.noMoney(totalMoney)){
+        while(!realPlayer.noMoney(realPlayer.potValue)){
 
             while (true) {
                 System.out.print("Place a bet? (y/n): ");
@@ -55,13 +57,13 @@ public class BlackjackController {
                     System.out.println("How much money do you want to bet?");
 
                     while (!scanner.hasNextInt()) {
-                            scanner.next();
-                            System.out.println("Wrong answer. Please insert a number.");
+                        scanner.next();
+                        System.out.println("Wrong answer. Please insert a number.");
 
                     }
                     currentBet = scanner.nextInt();
                     scanner.nextLine();
-                    realPlayer.placeBet(currentBet);
+                    currentBet = realPlayer.placeBet(currentBet);
 
                 } else {
                     System.out.println(" ");
@@ -127,46 +129,46 @@ public class BlackjackController {
             //write a helper method
             if (realPlayer.hand.handScore() < 22 && (cpPlayer.hand.handScore() > 21 || cpPlayer.hand.handScore() < realPlayer.hand.handScore())) {
                 message = "YOU WON!";
-                totalMoney += currentBet;
+                realPlayer.potValue += currentBet;
 
             } else if (realPlayer.hand.handScore() > 21 && cpPlayer.hand.handScore() > 21) {
                 message = "YOU BOTH LOST.";
-                totalMoney -= currentBet;
+                realPlayer.potValue -= currentBet;
 
             } else if ((cpPlayer.hand.handScore() == realPlayer.hand.handScore()) && cpPlayer.hand.handScore() < 22) {
                 message = "PUSH";
-                totalMoney += (currentBet / 2);
+                realPlayer.potValue += (currentBet / 2);
 
             } else if (cpPlayer.hand.handScore() > 21) {
                 message = cpPlayer.name + " lost!";
 
             } else if (cpPlayer.hand.handScore() > realPlayer.hand.handScore() && cpPlayer.hand.handScore() < 22) {
                 message = cpPlayer.name + " won!";
-                totalMoney -= currentBet;
+                realPlayer.potValue -= currentBet;
 
             } else if (cpPlayer.hand.handScore() < realPlayer.hand.handScore() && realPlayer.hand.handScore() > 21) {
                 message = cpPlayer.name + " won!";
-                totalMoney -= currentBet;
+                realPlayer.potValue -= currentBet;
             }
 
-        System.out.println("-------------");
-        System.out.println(message);
-        System.out.println("-------------");
-        System.out.println("You have " + totalMoney + "$");
-        System.out.println(" ");
+            System.out.println("-------------");
+            System.out.println(message);
+            System.out.println("-------------");
+            System.out.println("You have " + realPlayer.potValue + "$");
+            System.out.println(" ");
 
 
-        //clear hands and give new cards
-        realPlayer.hand.cardsInHand.clear();
-        playingDeck.deal(realPlayer);
-        playingDeck.deal(realPlayer);
-        cpPlayer.hand.cardsInHand.clear();
-        playingDeck.deal(cpPlayer);
+            //clear hands and give new cards
+            realPlayer.hand.cardsInHand.clear();
+            playingDeck.deal(realPlayer);
+            playingDeck.deal(realPlayer);
+            cpPlayer.hand.cardsInHand.clear();
+            playingDeck.deal(cpPlayer);
 
 
-        if (realPlayer.noMoney(totalMoney)){
-            System.out.println("You do not have any more money! Ciao.");
-        }
+            if (realPlayer.noMoney(realPlayer.potValue)){
+                System.out.println("You do not have any more money! Ciao.");
+            }
 
         }
 
