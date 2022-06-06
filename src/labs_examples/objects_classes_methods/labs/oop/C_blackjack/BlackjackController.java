@@ -8,6 +8,7 @@ public class BlackjackController {
 
         BlackjackController controller = new BlackjackController();
 
+
         System.out.println("Player name: ");
         playBlackJack();
     }
@@ -131,12 +132,14 @@ public class BlackjackController {
             System.out.println("-------------");
             if (result.equals("YOU WON!")){
                 realPlayer.potValue += currentBet;
+                realPlayer.setGameWon(realPlayer.getGameWon() + 1);
             } else if (result.equals("YOU BOTH LOST.")){
                 realPlayer.potValue -= currentBet;
             } else if (result.equals("PUSH")){
                 realPlayer.potValue += (currentBet / 2);
             } else if (result.equals(cpPlayer.name + " won!")){
                 realPlayer.potValue -= currentBet;
+                cpPlayer.setGameWon(cpPlayer.getGameWon() + 1);
             }
             System.out.println("You have " + realPlayer.potValue + "$");
             System.out.println(" ");

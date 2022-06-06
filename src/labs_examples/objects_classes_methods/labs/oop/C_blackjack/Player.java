@@ -12,6 +12,7 @@ public class Player { //this will hold player info
     int potValue;
     String message;
     int currentBet;
+    int gameWon;
 
     Scanner scanner = new Scanner(System.in);
 
@@ -97,6 +98,14 @@ public class Player { //this will hold player info
                 ", hand=" + hand +
                 ", potValue=" + potValue +
                 '}';
+    }
+
+    public int getGameWon() {
+        return gameWon;
+    }
+
+    public void setGameWon(int gameWon) {
+        this.gameWon = gameWon;
     }
 
     public String getName() {
