@@ -8,13 +8,4 @@ public class HikingApp {
 
     }
 
-    public String notString(String str) {
-        str = "ciao";
-        String n = "not";
-        if (!str.contains("not")){
-
-            return n+str;
-        }
-        return null;
-    }
 }

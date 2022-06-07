@@ -6,8 +6,16 @@ public class Hiker {
     int age;
     double height;
     double weight;
+    boolean isExpert;
+    boolean isBeginner;
+    boolean isIntermediate;
 
     Trail trail;
 
-
+    public Hiker(String name, int age, double height, double weight) {
+        this.name = name;
+        this.age = age;
+        this.height = height;
+        this.weight = weight;
+    }
 }
