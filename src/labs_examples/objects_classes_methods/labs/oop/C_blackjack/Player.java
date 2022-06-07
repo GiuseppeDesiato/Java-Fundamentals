@@ -33,8 +33,8 @@ public class Player { //this will hold player info
 
     }
 
-    public boolean noMoney(int amountOfMoney){
-        return amountOfMoney < 1;
+    public boolean noMoney(){
+        return (potValue < 1);
     }
 
     public int placeBet(int bet) {
@@ -63,6 +63,7 @@ public class Player { //this will hold player info
         return 0;
     }
 
+    //pass a number (+1, -1, 0)
     public String whoWon(Player realPlayer, Player cpPlayer){
 
         message = " ";
@@ -104,8 +105,8 @@ public class Player { //this will hold player info
         return gameWon;
     }
 
-    public void setGameWon(int gameWon) {
-        this.gameWon = gameWon;
+    public void setGameWon() {
+        this.gameWon++;
     }
 
     public String getName() {

@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class BlackjackController {
 
+    static int countGame = 0;
+
     public static void main(String[] args) {
 
         BlackjackController controller = new BlackjackController();
@@ -11,6 +13,7 @@ public class BlackjackController {
 
         System.out.println("Player name: ");
         playBlackJack();
+
     }
 
     public static void playBlackJack() {
@@ -44,7 +47,8 @@ public class BlackjackController {
         playingDeck.deal(cpPlayer); //  give only one card, because the second card is given inside cpPLayer while loop
 
         // big loop, for playing the game consecutively till the user has money.
-        while(!realPlayer.noMoney(realPlayer.potValue)){
+        while(!realPlayer.noMoney()){
+            countGame++;
 
             while (true) {
                 System.out.print("Place a bet? (y/n): ");
@@ -132,14 +136,14 @@ public class BlackjackController {
             System.out.println("-------------");
             if (result.equals("YOU WON!")){
                 realPlayer.potValue += currentBet;
-                realPlayer.setGameWon(realPlayer.getGameWon() + 1);
+                realPlayer.setGameWon();
             } else if (result.equals("YOU BOTH LOST.")){
                 realPlayer.potValue -= currentBet;
             } else if (result.equals("PUSH")){
                 realPlayer.potValue += (currentBet / 2);
             } else if (result.equals(cpPlayer.name + " won!")){
                 realPlayer.potValue -= currentBet;
-                cpPlayer.setGameWon(cpPlayer.getGameWon() + 1);
+                cpPlayer.setGameWon();
             }
             System.out.println("You have " + realPlayer.potValue + "$");
             System.out.println(" ");
@@ -153,9 +157,10 @@ public class BlackjackController {
             playingDeck.deal(cpPlayer);
 
 
-            if (realPlayer.noMoney(realPlayer.potValue)){
+            if (realPlayer.noMoney()){
                 System.out.println("You do not have any more money! Ciao.");
             }
         }
+        System.out.println(countGame);
     }
 }
