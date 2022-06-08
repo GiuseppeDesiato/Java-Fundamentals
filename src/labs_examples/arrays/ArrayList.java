@@ -1,6 +1,6 @@
 package labs_examples.arrays;
 
-public class ArrayList {
+public class ArrayList<T> {
 
     public static void main(String[] args) {
 
