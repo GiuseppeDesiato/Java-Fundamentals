@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 public class TrailDatabase {
 
+    ArrayList<Trail> list = new ArrayList<>();
+    ArrayList<Trail> easyTrails = new ArrayList<>();
+
     static Trail coldSpringPark = new Trail("Cold Spring Park",1.5, 27, 29, "easy", true, true);
     static Trail charlesRiver = new Trail("Charles River Walkway", 8.8, 2.37, 121, "easy", false, true);
     static Trail beaverBrookNorth = new Trail("Beaver Brook North Reservation", 2.5, 58, 269, "easy", true, true);
@@ -17,5 +20,54 @@ public class TrailDatabase {
     static Trail landMine = new Trail("Land Mine Challenge", 24.3, 9.10, 1305, "hard", true, false);
     static Trail monadnock = new Trail("Mount Monadnock", 3.8, 2.58, 1774, "hard", true, false);
     static Trail midstate = new Trail("Midstate Trail", 14.1, 6.25, 2283, "hard", false, false);
+
+    public void addList() {
+
+        list.add(coldSpringPark);
+        list.add(charlesRiver);
+        list.add(beaverBrookNorth);
+        list.add(pineHill);
+        list.add(prospectHill);
+        list.add(borderlandState);
+        list.add(storerConservation);
+        list.add(rockCircuit);
+        list.add(buckHill);
+        list.add(skylineTrail);
+        list.add(landMine);
+        list.add(monadnock);
+        list.add(midstate);
+    }
+
+    public ArrayList<Trail> printList() {
+        for(Trail t : list) {
+            System.out.println(t);
+        }
+        return list;
+    }
+
+    public void addEasyTrails(){
+        for(Trail t : list) {
+            if (t.difficulty.equals("easy")) {
+                easyTrails.add(t);
+            }
+        }
+    }
+
+    public ArrayList<Trail> printEasyTrails(){
+        for(Trail t : easyTrails) {
+            System.out.println(t.getName());
+        }
+        return easyTrails;
+    }
+
+
+    public void setList(ArrayList list) {
+        this.list = list;
+    }
+
+    //getter
+    public ArrayList getList() {
+        return list;
+    }
 
 }

@@ -1,6 +1,5 @@
 package labs_examples.objects_classes_methods.labs.oop.D_my_oop;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class HikingAppController {
@@ -10,21 +9,11 @@ public class HikingAppController {
         System.out.println("Hiker name: ");
         HikingCore();
 
-        ArrayList<Trail> list = new ArrayList<>();
+        TrailDatabase trailDatabase = new TrailDatabase();
+        trailDatabase.addList();
+        trailDatabase.addEasyTrails();
 
-        list.add(TrailDatabase.coldSpringPark);
-        list.add(TrailDatabase.charlesRiver);
-        list.add(TrailDatabase.beaverBrookNorth);
-        list.add(TrailDatabase.pineHill);
-        list.add(TrailDatabase.prospectHill);
-        list.add(TrailDatabase.borderlandState);
-        list.add(TrailDatabase.storerConservation);
-        list.add(TrailDatabase.rockCircuit);
-        list.add(TrailDatabase.buckHill);
-        list.add(TrailDatabase.skylineTrail);
-        list.add(TrailDatabase.landMine);
-        list.add(TrailDatabase.monadnock);
-        list.add(TrailDatabase.midstate);
+
     }
 
     public static void HikingCore(){
@@ -34,6 +23,7 @@ public class HikingAppController {
 
         Hiker hiker = new Hiker(input);
         Trail trail = new Trail();
+        TrailDatabase trailDatabase = new TrailDatabase();
 
         System.out.println("Hello " + input + "! Welcome to SUMMIT.");
         System.out.println(" ");
@@ -54,17 +44,17 @@ public class HikingAppController {
             }
         }
 
-        hiker.profile(); //level, age, height, weight
+        //hiker.profile(); //level, age, height, weight
         System.out.println(" ");
 
         System.out.println("Thank you!");
         System.out.println("Now, let's narrow down your preferences for today's hike");
         System.out.println(" ");
 
-        trail.trailSpec();//time, elevation, difficulty, dog
+        trail.trailSpec();//time, elevation, difficulty, kids
 
-        if(trail.miles <= 10){
-
+        if(trail.isEasy()){
+            trailDatabase.printEasyTrails();
         }
 
     }

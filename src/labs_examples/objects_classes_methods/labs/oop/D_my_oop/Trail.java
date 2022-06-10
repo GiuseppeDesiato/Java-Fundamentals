@@ -1,7 +1,6 @@
 package labs_examples.objects_classes_methods.labs.oop.D_my_oop;
 
-import labs_examples.arrays.ArrayList;
-
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Trail {
@@ -13,6 +12,9 @@ public class Trail {
     String difficulty;
     boolean isLoop;
     boolean kidFriendly;
+
+
+    Scanner scanner = new Scanner(System.in);
 
     public Trail(String name, double miles, double time, double elevation, String difficulty, boolean isLoop, boolean kidFriendly) {
         this.name = name;
@@ -27,8 +29,12 @@ public class Trail {
     public Trail() {
     }
 
-    Scanner scanner = new Scanner(System.in);
 
+    public void printEasy (ArrayList<Trail> list){
+        for(Trail t : list) {
+            System.out.println(t.getName());
+        }
+    }
 
 
     public void trailSpec(){
@@ -49,5 +55,21 @@ public class Trail {
         String dog= scanner.next().toLowerCase();
 
         return;
+    }
+
+    public boolean isEasy(){
+        if (difficulty.equals("easy")){
+            return true;
+        }
+        return false;
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
