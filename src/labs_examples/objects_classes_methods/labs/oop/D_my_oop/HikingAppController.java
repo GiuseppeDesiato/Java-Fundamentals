@@ -12,8 +12,9 @@ public class HikingAppController {
         TrailDatabase trailDatabase = new TrailDatabase();
         trailDatabase.addList();
         trailDatabase.addEasyTrails();
-
-
+        //trailDatabase.printList();
+        //trailDatabase.printEasyTrails();
+        
     }
 
     public static void HikingCore(){
@@ -24,6 +25,7 @@ public class HikingAppController {
         Hiker hiker = new Hiker(input);
         Trail trail = new Trail();
         TrailDatabase trailDatabase = new TrailDatabase();
+        trailDatabase.addList();
 
         System.out.println("Hello " + input + "! Welcome to SUMMIT.");
         System.out.println(" ");
@@ -51,9 +53,27 @@ public class HikingAppController {
         System.out.println("Now, let's narrow down your preferences for today's hike");
         System.out.println(" ");
 
-        trail.trailSpec();//time, elevation, difficulty, kids
+        //trail.trailSpec();//time, elevation, difficulty, kids
 
-        if(trail.isEasy()){
+        System.out.println("Max Mileage: ");
+        double miles = scanner.nextDouble();
+
+        System.out.println("Max Time: (hh.mm)");
+        double time = scanner.nextDouble();
+
+        System.out.println("Max Elevation Gain: ");
+        double elevation = scanner.nextDouble();
+
+        System.out.println("Difficulty: (easy / moderate / hard)");
+        String difficulty = scanner.next().toLowerCase();
+
+        System.out.println("kid-friendly: (y/n)");
+        String dog= scanner.next().toLowerCase();
+
+        trailDatabase.addEasyTrails();
+
+        if(difficulty.equals("easy")){
+            System.out.println("Ok, these trails might work for you: ");
             trailDatabase.printEasyTrails();
         }
 

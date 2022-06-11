@@ -29,13 +29,11 @@ public class Trail {
     public Trail() {
     }
 
-
     public void printEasy (ArrayList<Trail> list){
         for(Trail t : list) {
             System.out.println(t.getName());
         }
     }
-
 
     public void trailSpec(){
 
@@ -63,7 +61,6 @@ public class Trail {
         }
         return false;
     }
-
 
     public String getName() {
         return name;

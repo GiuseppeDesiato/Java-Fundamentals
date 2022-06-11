@@ -36,11 +36,12 @@ public class TrailDatabase {
         list.add(landMine);
         list.add(monadnock);
         list.add(midstate);
+
     }
 
     public ArrayList<Trail> printList() {
         for(Trail t : list) {
-            System.out.println(t);
+            System.out.println(t.getName());
         }
         return list;
     }
