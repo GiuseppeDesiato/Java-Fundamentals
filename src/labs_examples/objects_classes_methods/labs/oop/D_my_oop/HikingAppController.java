@@ -9,12 +9,7 @@ public class HikingAppController {
         System.out.println("Hiker name: ");
         HikingCore();
 
-        TrailDatabase trailDatabase = new TrailDatabase();
-        trailDatabase.addList();
-        trailDatabase.addEasyTrails();
-        //trailDatabase.printList();
-        //trailDatabase.printEasyTrails();
-        
+
     }
 
     public static void HikingCore(){
@@ -26,6 +21,9 @@ public class HikingAppController {
         Trail trail = new Trail();
         TrailDatabase trailDatabase = new TrailDatabase();
         trailDatabase.addList();
+        trailDatabase.addEasyTrails();
+        trailDatabase.addModTrails();
+        trailDatabase.addHardTrails();
 
         System.out.println("Hello " + input + "! Welcome to SUMMIT.");
         System.out.println(" ");
@@ -47,35 +45,37 @@ public class HikingAppController {
         }
 
         //hiker.profile(); //level, age, height, weight
-        System.out.println(" ");
 
+        System.out.println(" ");
         System.out.println("Thank you!");
         System.out.println("Now, let's narrow down your preferences for today's hike");
         System.out.println(" ");
 
-        //trail.trailSpec();//time, elevation, difficulty, kids
+        trail.trailDifficulty();
+        //trail.printTrailDifficulty();
 
-        System.out.println("Max Mileage: ");
-        double miles = scanner.nextDouble();
-
-        System.out.println("Max Time: (hh.mm)");
-        double time = scanner.nextDouble();
-
-        System.out.println("Max Elevation Gain: ");
-        double elevation = scanner.nextDouble();
-
-        System.out.println("Difficulty: (easy / moderate / hard)");
-        String difficulty = scanner.next().toLowerCase();
-
-        System.out.println("kid-friendly: (y/n)");
-        String dog= scanner.next().toLowerCase();
-
-        trailDatabase.addEasyTrails();
-
-        if(difficulty.equals("easy")){
-            System.out.println("Ok, these trails might work for you: ");
-            trailDatabase.printEasyTrails();
+        switch (trail.difficulty) {
+            case "easy": {
+                System.out.println(" ");
+                System.out.println("Ok, these easy trails might work for you: ");
+                System.out.println(" ");
+                trailDatabase.printEasyTrails();
+                break;
+            }
+            case "moderate": {
+                System.out.println(" ");
+                System.out.println("Ok, these moderate trails might work for you: ");
+                System.out.println(trailDatabase.printModTrails());
+                break;
+            }
+            case "hard": {
+                System.out.println(" ");
+                System.out.println("Ok, these hard trails might work for you: ");
+                System.out.println(trailDatabase.printHardTrails());
+                break;
+            }
         }
+
 
     }
 
