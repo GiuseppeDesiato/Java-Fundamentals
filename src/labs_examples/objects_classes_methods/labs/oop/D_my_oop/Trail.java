@@ -5,15 +5,16 @@ import java.util.Scanner;
 
 public class Trail {
 
-    String name = null;
+    String name = " ";
     double miles = 0;
     double time = 0;
     double elevation = 0;
-    String difficulty = null;
+    String difficulty = " ";
     boolean isLoop = false;
     boolean kidFriendly = false;
 
     Scanner scanner = new Scanner(System.in);
+    TrailDatabase trailDatabase = new TrailDatabase();
 
     public Trail(String name, double miles, double time, double elevation, String difficulty, boolean isLoop, boolean kidFriendly) {
         this.name = name;
@@ -26,6 +27,25 @@ public class Trail {
     }
 
     public Trail() {
+    }
+
+    public void doExplore(){
+
+        while(true){
+            System.out.println("Do yo want to explore a new trail? (y/n)");
+            String answer1 = scanner.next().toLowerCase();
+
+            if (!(answer1.equals("y") || answer1.equals("n"))) {
+                System.out.println("Wrong answer. Please type 'y' or 'n'.");
+            } else if (answer1.equals("y")) {
+                System.out.println("Great! Tell us more about you!");
+                System.out.println(" ");
+                break;
+            } else {
+                System.out.println("Ok, please explore our home page and see if you find something interesting.");
+                return;
+            }
+        }
     }
 
     public void trailDifficulty(){
@@ -41,34 +61,16 @@ public class Trail {
         }
     }
 
-    TrailDatabase trailDatabase = new TrailDatabase();
-
-    public void printTrailDifficulty(){
-
-        switch (difficulty) {
-            case "easy": {
-                System.out.println(" ");
-                System.out.println("Ok, these easy trails might work for you: ");
-                System.out.println(" ");
-                trailDatabase.printEasyTrails();
-                break;
-            }
-            case "moderate": {
-                System.out.println(" ");
-                System.out.println("Ok, these moderate trails might work for you: ");
-                System.out.println(trailDatabase.printModTrails());
-                break;
-            }
-            case "hard": {
-                System.out.println(" ");
-                System.out.println("Ok, these hard trails might work for you: ");
-                System.out.println(trailDatabase.printHardTrails());
-                break;
-            }
-        }
+    public boolean isEasy() {
+        return difficulty.equals("easy");
     }
+    public boolean isModerate() {
+        return difficulty.equals("moderate");
+    }
+    public boolean isHard() {
+        return difficulty.equals("hard");
 
-
+    }
 
     public boolean trailType1 (Trail trail){
         if(miles <= 2 || time <= 2 || elevation <= 150 || difficulty.equals("easy")){
@@ -76,7 +78,7 @@ public class Trail {
         }
         return false;
     }
-
+/*
     public void trailSpec(){
 
         System.out.println("Difficulty: (easy / moderate / hard)");
@@ -91,6 +93,8 @@ public class Trail {
         System.out.println("Max Elevation Gain: ");
         elevation = scanner.nextDouble();
     }
+
+ */
 
     public String getName() {
         return name;

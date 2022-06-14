@@ -28,21 +28,7 @@ public class HikingAppController {
         System.out.println("Hello " + input + "! Welcome to SUMMIT.");
         System.out.println(" ");
 
-        while(true){
-            System.out.println("Do yo want to explore a new trail? (y/n)");
-            String answer1 = scanner.next().toLowerCase();
-
-            if (!(answer1.equals("y") || answer1.equals("n"))) {
-                System.out.println("Wrong answer. Please type 'y' or 'n'.");
-            } else if (answer1.equals("y")) {
-                System.out.println("Great! Tell us more about you!");
-                System.out.println(" ");
-                break;
-            } else {
-                System.out.println("Ok, please explore our home page and see if you find something interesting.");
-                return;
-            }
-        }
+        trail.doExplore();
 
         //hiker.profile(); //level, age, height, weight
 
@@ -52,31 +38,13 @@ public class HikingAppController {
         System.out.println(" ");
 
         trail.trailDifficulty();
-        //trail.printTrailDifficulty();
 
-        switch (trail.difficulty) {
-            case "easy": {
-                System.out.println(" ");
-                System.out.println("Ok, these easy trails might work for you: ");
-                System.out.println(" ");
-                trailDatabase.printEasyTrails();
-                break;
-            }
-            case "moderate": {
-                System.out.println(" ");
-                System.out.println("Ok, these moderate trails might work for you: ");
-                System.out.println(trailDatabase.printModTrails());
-                break;
-            }
-            case "hard": {
-                System.out.println(" ");
-                System.out.println("Ok, these hard trails might work for you: ");
-                System.out.println(trailDatabase.printHardTrails());
-                break;
-            }
+        if(trail.isEasy()){
+            trailDatabase.printEasyTrails();
+        } else if(trail.isModerate()){
+            trailDatabase.printModTrails();
+        } else{
+            trailDatabase.printHardTrails();
         }
-
-
     }
-
 }
