@@ -23,7 +23,7 @@ public class Exercise_07 {
     }
 
     public static void numPeople() throws OutOfElevatorCapacity {
-        
+
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Before activating the elevator");

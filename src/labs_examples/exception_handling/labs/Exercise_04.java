@@ -1,5 +1,7 @@
 package labs_examples.exception_handling.labs;
 
+import jdk.nashorn.internal.runtime.ECMAException;
+
 /**
  * Exception Handling Exercise 4:
  *
@@ -11,31 +13,22 @@ public class Exercise_04 {
 
     public static void main(String[] args) {
 
-        try
-        {
-            System.out.println("Inside main try block");
-            // Inner try-catch block1
-            try
-            {
-                System.out.println("Dividing");
-                int num = 1989/0;
+        int a = 10;
+        int b = 2;
+        int c = 0;
+        int d = 2;
+
+        try{
+            int i = a / 0;
+            System.out.println(i);
+        } catch (Exception one){
+            System.out.println(one);
+            try {
+                int j = d / c;
+                System.out.println(j);
+            } catch (Exception two){
+                System.out.println(two);
             }
-            catch(ArithmeticException ex) {
-                System.out.println(ex);
-            }
-            // Inner try-catch block2
-            try
-            {
-                int num2 = 100/0;
-            }
-            catch(ArrayIndexOutOfBoundsException ex) {
-                System.out.println(ex);
-            }
-            System.out.println("remaining statements inside main try block");
         }
-        catch(Exception ex) {
-            System.out.println(ex);
-        }
-        System.out.println("remaining code, normal flow");
     }
 }
