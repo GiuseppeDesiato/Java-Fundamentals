@@ -1,5 +1,10 @@
 package labs_examples.input_output.labs;
 
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 /**
  * Input/Output Exercise 1: File input/output
  *
@@ -10,9 +15,20 @@ package labs_examples.input_output.labs;
  */
 
 class Example {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
+        try (FileInputStream inputStream =
+                     new FileInputStream("src/labs_examples/input_output/labs/exercise_1.txt");
+             BufferedInputStream buffInputStr =
+                     new BufferedInputStream(inputStream)) {
 
+            int i;
 
+            while ((i = buffInputStr.read()) != -1) {
+                System.out.print((char) i);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
