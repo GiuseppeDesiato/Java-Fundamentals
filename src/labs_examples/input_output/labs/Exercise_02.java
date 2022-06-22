@@ -19,12 +19,10 @@ class Exercise_2_no_Buffer_Reader {
     public static void main(String[] args) throws IOException {
 
         FileReader inputStream = null;
-        //BufferedReader bufferedReader= null;
         FileWriter outputStream = null;
 
         try {
             inputStream = new FileReader("src/labs_examples/input_output/labs/exercise_1.txt");
-            //bufferedReader = new BufferedReader(inputStream);
             outputStream = new FileWriter("src/labs_examples/input_output/labs/exercise_2_encr.txt");
 
             int i;
