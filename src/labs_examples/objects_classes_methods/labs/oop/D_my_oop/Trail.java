@@ -29,37 +29,6 @@ public class Trail {
     public Trail() {
     }
 
-    public void doExplore(){
-
-        while(true){
-            System.out.println("Do yo want to explore a new trail? (y/n)");
-            String answer1 = scanner.next().toLowerCase();
-
-            if (!(answer1.equals("y") || answer1.equals("n"))) {
-                System.out.println("Wrong answer. Please type 'y' or 'n'.");
-            } else if (answer1.equals("y")) {
-                System.out.println("Great! Tell us more about you!");
-                System.out.println(" ");
-                break;
-            } else {
-                System.out.println("Ok, please explore our home page and see if you find something interesting.");
-                return;
-            }
-        }
-    }
-
-    public void trailDifficulty(){
-        while(true) {
-            System.out.println("Difficulty: (easy / moderate / hard)");
-            difficulty = scanner.next().toLowerCase();
-
-            if (!(difficulty.equals("easy") || difficulty.equals("moderate") || difficulty.equals("hard"))) {
-                System.out.println("Wrong answer. Please type easy, moderate or hard.");
-            } else {
-                break;
-            }
-        }
-    }
 
     public boolean isEasy() {
         return difficulty.equals("easy");

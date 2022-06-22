@@ -6,7 +6,7 @@ public class Exercise_03_1a {
 
     public static void main(String[] args) {
 
-        byte[] array = {50, 20, 30 , 40 , 100};
+        byte[] array = {50, 20, 30 ,40 ,100};
 
         try {
             ByteArrayInputStream input = new ByteArrayInputStream(array);

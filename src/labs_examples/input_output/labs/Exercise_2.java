@@ -12,7 +12,7 @@ import java.io.IOException;
  *      -For example, change every 'a' to '-' and every 'e' to '~' .
  *      -Make sure you close the connections to both files.
  *
- *      Then, ead back the encrypted file using the BufferedReader and
+ *      Then, read back the encrypted file using the BufferedReader and
  *      print out the unencrypted version. Does it match the original file?
  *
  */
