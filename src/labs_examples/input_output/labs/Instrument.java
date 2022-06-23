@@ -52,11 +52,6 @@ public class Instrument {
 
     @Override
     public String toString() {
-        return "Instrument{" +
-                "num=" + num + '\'' +
-                ", name='" + name + '\'' +
-                ", family='" + family + '\'' +
-                ", octaves=" + octaves +
-                '}';
+        return num + "," + name + "," + family + "," + octaves + "\n";
     }
 }
