@@ -13,6 +13,7 @@ public class Trail {
     boolean isLoop = false;
     boolean kidFriendly = false;
 
+    Scanner scanner = new Scanner(System.in);
 
     public Trail(String name, double miles, double time, double elevation, String difficulty, boolean isLoop, boolean kidFriendly) {
         this.name = name;
@@ -46,7 +47,7 @@ public class Trail {
         }
         return false;
     }
-/*
+
     public void trailSpec(){
 
         System.out.println("Difficulty: (easy / moderate / hard)");
@@ -62,7 +63,7 @@ public class Trail {
         elevation = scanner.nextDouble();
     }
 
- */
+
 
     public String getName() {
         return name;

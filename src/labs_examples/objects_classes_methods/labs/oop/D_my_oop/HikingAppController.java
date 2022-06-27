@@ -13,9 +13,9 @@ public class HikingAppController {
 
         System.out.println("Hello " + input + "! Welcome to SUMMIT.");
 
-        System.out.println("hola");
 
         Trail trail = new Trail();
+        TrailDatabase trailDatabase = new TrailDatabase();
 
 
         /*
@@ -36,13 +36,45 @@ public class HikingAppController {
          */
 
 
-        while(true){
+        String menu1 = "";
+
+
+        do {
+            System.out.println("HOME MENU:");
 
             System.out.println("1. explore trails");
             System.out.println("2. add trails");
             System.out.println("3. maybe delete trails");
             System.out.println("4. update hiker profile");
             System.out.println("5. quit");
+
+            System.out.println("Please selece a number. (1-5)");
+            menu1 = scanner.next();
+
+            switch(menu1) {
+                case "1":
+                    System.out.println("1. explore trails");
+                    break;
+                case "2":
+                    System.out.println("2. add trails");
+                    break;
+                case "3":
+                    System.out.println("3. maybe delete trails");
+                    break;
+                case "4":
+                    System.out.println("4. update hiker profile");
+                    break;
+                case "5":
+                    System.out.println("5. quit");
+                    break;
+                default:
+                    System.out.println("Wrong input. Please select a number from 1 to 5");
+
+            }
+        } while(!menu1.equals("1") || !menu1.equals("2") || !menu1.equals("3") ||!menu1.equals("4") || !menu1.equals("5"));
+
+
+        while (true) {
 
             System.out.println("Do yo want to explore a new trail? (y/n)");
             String answer1 = scanner.next().toLowerCase();
@@ -60,15 +92,14 @@ public class HikingAppController {
         }
 
 
-
         //hiker.profile(); //level, age, height, weight
-/*
+
         System.out.println(" ");
         System.out.println("Thank you!");
         System.out.println("Now, let's narrow down your preferences for today's hike");
         System.out.println(" ");
 
-        while(true) {
+        while (true) {
             System.out.println("Difficulty: (easy / moderate / hard)");
             trail.difficulty = scanner.next().toLowerCase();
             if (!(trail.difficulty.equals("easy") || trail.difficulty.equals("moderate") || trail.difficulty.equals("hard"))) {
@@ -78,15 +109,14 @@ public class HikingAppController {
             }
         }
 
-        if(trail.isEasy()){
+        if (trail.isEasy()) {
             trailDatabase.printEasyTrails();
-        } else if(trail.isModerate()){
+        } else if (trail.isModerate()) {
             trailDatabase.printModTrails();
-        } else{
+        } else {
             trailDatabase.printHardTrails();
         }
 
- */
 
     }
 
