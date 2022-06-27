@@ -15,7 +15,8 @@ public class HikingAppController {
 
         Trail trail = new Trail();
         TrailDatabase trailDatabase = new TrailDatabase();
-        
+
+
         /*
         a sequence of menu items
         all inside a while true.
@@ -33,6 +34,7 @@ public class HikingAppController {
         other menu according to the choice
          */
 
+/*
         while(true){
 
             System.out.println("1. explore trails");
@@ -52,9 +54,11 @@ public class HikingAppController {
                 break;
             } else {
                 System.out.println("Ok, please explore our home page and see if you find something interesting.");
-                return;
+                break;
             }
         }
+
+ */
 
         //hiker.profile(); //level, age, height, weight
 
