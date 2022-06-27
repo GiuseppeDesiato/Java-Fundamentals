@@ -13,8 +13,9 @@ public class HikingAppController {
 
         System.out.println("Hello " + input + "! Welcome to SUMMIT.");
 
+        System.out.println("hola");
+
         Trail trail = new Trail();
-        TrailDatabase trailDatabase = new TrailDatabase();
 
 
         /*
@@ -34,7 +35,7 @@ public class HikingAppController {
         other menu according to the choice
          */
 
-/*
+
         while(true){
 
             System.out.println("1. explore trails");
@@ -58,10 +59,10 @@ public class HikingAppController {
             }
         }
 
- */
+
 
         //hiker.profile(); //level, age, height, weight
-
+/*
         System.out.println(" ");
         System.out.println("Thank you!");
         System.out.println("Now, let's narrow down your preferences for today's hike");
@@ -84,6 +85,8 @@ public class HikingAppController {
         } else{
             trailDatabase.printHardTrails();
         }
+
+ */
 
     }
 

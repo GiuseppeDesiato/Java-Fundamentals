@@ -13,8 +13,6 @@ public class Trail {
     boolean isLoop = false;
     boolean kidFriendly = false;
 
-    Scanner scanner = new Scanner(System.in);
-    TrailDatabase trailDatabase = new TrailDatabase();
 
     public Trail(String name, double miles, double time, double elevation, String difficulty, boolean isLoop, boolean kidFriendly) {
         this.name = name;
@@ -27,6 +25,7 @@ public class Trail {
     }
 
     public Trail() {
+
     }
 
 
