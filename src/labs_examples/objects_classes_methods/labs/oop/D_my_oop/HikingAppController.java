@@ -6,45 +6,36 @@ public class HikingAppController {
 
     public static void main(String[] args) {
 
-        System.out.println("Hiker name: ");
+        System.out.println("WELCOME TO SUMMIT");
+        System.out.println("");
+        System.out.println("-----------");
+        System.out.println("Press ENTER");
+        System.out.println("-----------");
 
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
 
-        System.out.println("Hello " + input + "! Welcome to SUMMIT.");
-
-
+        Hiker hiker = new Hiker();
         Trail trail = new Trail();
         TrailDatabase trailDatabase = new TrailDatabase();
 
+        hiker.profile();
 
-        /*
-        a sequence of menu items
-        all inside a while true.
-
-        first menu:
-        explore trails
-        add trails (not presented)
-        maybe delete trails
-        update hiker profile
-        quit
-
-        in a while loop
-        ask for input (numbers)
-
-        other menu according to the choice
-         */
-
+        trailDatabase.addEasyTrails();
+        trailDatabase.addModTrails();
+        trailDatabase.addHardTrails();
 
         String menu1 = "";
-
-
+        boolean displayMenu = true;
+        //MAIN MENU
         do {
-            System.out.println("HOME MENU:");
+            System.out.println("//////////");
+            System.out.println("MAIN MENU:");
+            System.out.println("//////////");
 
             System.out.println("1. explore trails");
-            System.out.println("2. add trails");
-            System.out.println("3. maybe delete trails");
+            System.out.println("2. add a trail");
+            System.out.println("3. update trail info");
             System.out.println("4. update hiker profile");
             System.out.println("5. quit");
 
@@ -54,45 +45,75 @@ public class HikingAppController {
             switch(menu1) {
                 case "1":
                     System.out.println("1. explore trails");
+                    System.out.println(" ");
+                    System.out.println("Thank you!");
+                    System.out.println(" ");
+                    System.out.println("Now, let's narrow down your preferences for today's hike.");
+                    System.out.println(" ");
+
+                    while (true) {
+                        System.out.println("------------");
+                        System.out.println("TRAILS MENU:");
+                        System.out.println("------------");
+                        System.out.println("Difficulty: 1 (easy) / 2 (moderate) / 3 (hard)");
+                        trail.difficulty = scanner.next().toLowerCase();
+
+                        if (!(trail.difficulty.equals("1") || trail.difficulty.equals("2") || trail.difficulty.equals("3"))) {
+                            System.out.println("Wrong answer. Please type easy, moderate or hard.");
+                        } else if (trail.isEasy()) {
+                            int counter = 1;
+                            for (Trail t : trailDatabase.easyTrails) {
+                                System.out.println(counter + ":" + t.getName());
+                                counter++;
+                            }
+                            System.out.println("");
+                            System.out.println("Please select a trail number: ");
+                            String trailNum = scanner.next();
+                            System.out.println(" ");
+                        } else if (trail.isModerate()) {
+                            int counter = 1;
+                            for (Trail t : trailDatabase.modTrails) {
+                                System.out.println(counter + ":" + t.getName());
+                                counter++;
+                            }
+                            System.out.println("");
+                            System.out.println("Please select a trail number: ");
+                            String trailNum = scanner.next();
+                            System.out.println(" ");
+                        } else {
+                            int counter = 1;
+                            for (Trail t : trailDatabase.hardTrails) {
+                                System.out.println(counter + ":" + t.getName());
+                                counter++;
+                            }
+                            System.out.println("");
+                            System.out.println("Please select a trail number: ");
+                            String trailNum = scanner.next();
+                            System.out.println(" ");
+                        }
+                        break;
+                    }
                     break;
+
                 case "2":
-                    System.out.println("2. add trails");
+                    System.out.println("2. add a trail");
                     break;
                 case "3":
-                    System.out.println("3. maybe delete trails");
+                    System.out.println("3. update trail info");
                     break;
                 case "4":
                     System.out.println("4. update hiker profile");
                     break;
                 case "5":
                     System.out.println("5. quit");
+                    displayMenu = false;
                     break;
                 default:
                     System.out.println("Wrong input. Please select a number from 1 to 5");
 
             }
-        } while(!menu1.equals("1") || !menu1.equals("2") || !menu1.equals("3") ||!menu1.equals("4") || !menu1.equals("5"));
+        } while(displayMenu);
 
-
-        while (true) {
-
-            System.out.println("Do yo want to explore a new trail? (y/n)");
-            String answer1 = scanner.next().toLowerCase();
-
-            if (!(answer1.equals("y") || answer1.equals("n"))) {
-                System.out.println("Wrong answer. Please type 'y' or 'n'.");
-            } else if (answer1.equals("y")) {
-                System.out.println("Great! Tell us more about you!");
-                System.out.println(" ");
-                break;
-            } else {
-                System.out.println("Ok, please explore our home page and see if you find something interesting.");
-                break;
-            }
-        }
-
-
-        //hiker.profile(); //level, age, height, weight
 
         System.out.println(" ");
         System.out.println("Thank you!");
@@ -116,7 +137,6 @@ public class HikingAppController {
         } else {
             trailDatabase.printHardTrails();
         }
-
 
     }
 

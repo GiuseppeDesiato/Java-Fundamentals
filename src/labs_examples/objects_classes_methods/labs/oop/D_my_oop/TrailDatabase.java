@@ -11,7 +11,7 @@ public class TrailDatabase {
 
 
     public TrailDatabase() {
-        list.add(new Trail("Cold Spring Park",1.5, 0.27, 29, "easy", true, true));
+        list.add( new Trail("Cold Spring Park",1.5, 0.27, 29, "easy", true, true));
         list.add( new Trail("Beaver Brook North Reservation", 2.5, 0.58, 269, "easy", true, true));
         list.add( new Trail("Charles River Walkway", 8.8, 2.37, 121, "easy", false, true));
         list.add( new Trail("Pine Hill", 0.9, 0.25, 150, "easy", false, false));

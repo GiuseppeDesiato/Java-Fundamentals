@@ -31,13 +31,13 @@ public class Trail {
 
 
     public boolean isEasy() {
-        return difficulty.equals("easy");
+        return difficulty.equals("1");
     }
     public boolean isModerate() {
-        return difficulty.equals("moderate");
+        return difficulty.equals("2");
     }
     public boolean isHard() {
-        return difficulty.equals("hard");
+        return difficulty.equals("3");
 
     }
 
