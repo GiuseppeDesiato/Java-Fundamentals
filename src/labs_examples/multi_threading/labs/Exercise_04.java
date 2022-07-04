@@ -20,10 +20,10 @@ public class Exercise_04 {
         r01.start();
         r02.start();
 
+
     }
 
     static class Sync{
-
         //method synchronization
         synchronized public void getObj() {
             for (int i = 0; i < 3; i++) {

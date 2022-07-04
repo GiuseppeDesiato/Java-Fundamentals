@@ -1,6 +1,21 @@
 package labs_examples.multi_threading.examples;
 
 // Use wait() and notify() to create a ticking clock.
+class ThreadCom {
+
+    public static void main(String args[]) {
+        TickTock tt = new TickTock();
+        MyThread8 mt1 = new MyThread8("Tick", tt);
+        MyThread8 mt2 = new MyThread8("Tock", tt);
+
+        try {
+            mt1.thrd.join();
+            mt2.thrd.join();
+        } catch(InterruptedException exc) {
+            System.out.println("Main thread interrupted.");
+        }
+    }
+}
 
 class TickTock {
 
@@ -72,21 +87,6 @@ class MyThread8 implements Runnable {
             for(int i=0; i<5; i++)
                 ttOb.tock(true);
             ttOb.tock(false);
-        }
-    }
-}
-
-class ThreadCom {
-    public static void main(String args[]) {
-        TickTock tt = new TickTock();
-        MyThread8 mt1 = new MyThread8("Tick", tt);
-        MyThread8 mt2 = new MyThread8("Tock", tt);
-
-        try {
-            mt1.thrd.join();
-            mt2.thrd.join();
-        } catch(InterruptedException exc) {
-            System.out.println("Main thread interrupted.");
         }
     }
 }
