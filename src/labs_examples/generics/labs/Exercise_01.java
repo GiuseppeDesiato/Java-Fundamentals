@@ -14,10 +14,18 @@ class Exercise_01{
         TestGen <String, String> gen1 = new TestGen("Hello", "World");
         TestGen <Integer, Double> gen2 = new TestGen(123, 24.5);
         TestGen <String, Double> gen3 = new TestGen("I am", 5.9);
+        TestGen <Integer, String> gen4 = new TestGen<>(78, "hello");
 
         gen1.print();
         gen2.print();
         gen3.print();
+
+        gen4.setVal1(77);
+        gen4.setVal2("Ciao");
+
+        gen4.print();
+
+        System.out.println("The first value of gen3 is " + "'" + gen3.getVal1() + "'.");
 
     }
 }
