@@ -28,7 +28,8 @@ public class BoundedTypeTest {
 
 class NumericExample {
 
-    // write a generic method below that will return the sum of ANY two numeric values (no matter what their specific data type is) (but remember the values must be Numeric)
+    // write a generic method below that will return the sum of ANY two numeric values
+    // (no matter what their specific data type is) (but remember the values must be Numeric)
 
     public <V extends Number> double sum(V v1, V v2){
         return v1.doubleValue() + v2.doubleValue();
