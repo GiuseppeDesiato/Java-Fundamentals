@@ -20,6 +20,7 @@ class Main {
         Demo demo = new Demo();
 
         System.out.println(demo.sumArray(listNum));
+
     }
 }
 
