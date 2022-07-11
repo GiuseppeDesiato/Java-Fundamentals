@@ -1,6 +1,8 @@
 package labs_examples.generics.labs;
 
 
+import java.util.ArrayList;
+
 /**
  * Generics Exercise 3:
  *
@@ -19,7 +21,6 @@ package labs_examples.generics.labs;
 class Exercise_03 {
     public static void main(String[] args) {
 
-
         Operations op = new Operations();
 
         //1)
@@ -34,6 +35,18 @@ class Exercise_03 {
         //3)
         op.switchPos(strArray, 1,4);
         op.printArray(strArray);
+
+        //4)
+        ArrayList<Integer> arrList = new ArrayList<>();
+        arrList.add(78);
+        arrList.add(56);
+        arrList.add(734);
+        arrList.add(128);
+        arrList.add(18);
+
+        int highNum = op.largeElem(arrList);
+        System.out.println(highNum);
+
     }
 }
 
@@ -77,6 +90,20 @@ class Operations{
         for(int i =0; i < arr.length; i++){
             System.out.print(arr[i] + " ");
         }
+        System.out.println(" ");
+    }
+
+    //4)
+    public <T extends Number> T largeElem(ArrayList<T> list){
+        int i = 0;
+        T max = list.get(0);
+
+        for(i = 0; i < list.size(); i++) {
+            if(max.intValue() < list.get(i).intValue()){
+                max = list.get(i);
+            }
+        }
+        return max;
     }
 
 }
