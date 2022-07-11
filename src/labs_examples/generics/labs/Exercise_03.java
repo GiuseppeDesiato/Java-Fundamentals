@@ -38,7 +38,7 @@ class Operations{
         return a.doubleValue() + b.doubleValue();
     }
 
-    public static <E> int countElem(E[] strList){
+    public int countElem(String[] strList){
         String str = "";
 
         int countPal = 0;
