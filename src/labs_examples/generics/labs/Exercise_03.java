@@ -58,7 +58,7 @@ class Operations{
     }
 
     //2) modify in order to become a generic method
-    public int countElem(String[] strList){
+    public <T extends Number> int countElem(String[] strList){
 
         int countPal = 0;
 

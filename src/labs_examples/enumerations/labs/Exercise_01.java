@@ -1,5 +1,6 @@
 package labs_examples.enumerations.labs;
 
+
 /**
  * Enumerations Exercise 1:
  *
@@ -8,3 +9,28 @@ package labs_examples.enumerations.labs;
  *      of this enum from a seperate class.
  */
 
+class Exercise_01{
+
+    public static void main(String[] args) {
+        Season season = new Season();
+
+        System.out.println(season.isNice(EnumSeasons.FALL));
+
+    }
+}
+
+enum EnumSeasons {
+    SPRING, SUMMER, FALL, WINTER
+}
+
+class Season {
+
+    private EnumSeasons enumSeasons;
+
+    public boolean isNice(EnumSeasons e) {
+        if(enumSeasons == EnumSeasons.SPRING || enumSeasons == EnumSeasons.SUMMER){
+            return true;
+        }
+        return false;
+    }
+}
