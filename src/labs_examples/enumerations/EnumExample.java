@@ -2,7 +2,6 @@ package labs_examples.enumerations;
 
 public class EnumExample {
 
-    class Main {
         public static void main(String[] args) {
             Size size = Size.SMALL;
             System.out.println(size.getSize());
@@ -28,4 +27,4 @@ public class EnumExample {
             return pizzaSize;
         }
     }
-}
+

@@ -70,6 +70,7 @@ public class HikingAppController {
                             System.out.println("Please select a trail number: ");
                             String trailNum = scanner.next();
                             System.out.println(" ");
+
                         } else if (trail.isModerate()) {
                             int counter = 1;
                             for (Trail t : trailDatabase.modTrails) {
@@ -80,6 +81,7 @@ public class HikingAppController {
                             System.out.println("Please select a trail number: ");
                             String trailNum = scanner.next();
                             System.out.println(" ");
+
                         } else {
                             int counter = 1;
                             for (Trail t : trailDatabase.hardTrails) {
