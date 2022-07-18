@@ -30,6 +30,7 @@ public class LambdaExpressionTest {
     }
 }
 
+@FunctionalInterface
 interface LambdaInter {
     public int apply(int a, int b);
 }
