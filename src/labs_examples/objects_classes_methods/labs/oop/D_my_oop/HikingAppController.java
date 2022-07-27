@@ -70,6 +70,10 @@ public class HikingAppController {
                             System.out.println("Please select a trail number: ");
                             String trailNum = scanner.next();
                             System.out.println(" ");
+                            System.out.println("You have selected: ");
+                            if (trailNum.equals("1")){
+                                System.out.println(trailDatabase.easyTrails.get(0));
+                            }
 
                         } else if (trail.isModerate()) {
                             int counter = 1;

@@ -22,6 +22,9 @@ public class LambdaThread {
         Thread thread1 = new Thread(runnable);
         thread1.start();
 
+        Thread thread2 = new Thread(runnable);
+        thread2.start();
+
         }
 
     }

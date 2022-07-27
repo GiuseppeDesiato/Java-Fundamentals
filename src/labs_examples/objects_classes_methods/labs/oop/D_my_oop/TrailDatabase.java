@@ -86,4 +86,10 @@ public class TrailDatabase {
         return list;
     }
 
+    @Override
+    public String toString() {
+        return "TrailDatabase{" +
+                "easyTrails=" + easyTrails +
+                '}';
+    }
 }

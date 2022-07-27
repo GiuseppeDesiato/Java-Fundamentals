@@ -21,8 +21,10 @@ public class ArrayList<T> {
             System.out.println(s);
         }
 
+
         int  lastIndexOfProgramming = arrayList.lastIndexOf("Programming");
         System.out.println(lastIndexOfProgramming);
+
 
     }
 }

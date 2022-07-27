@@ -63,13 +63,22 @@ public class Trail {
         elevation = scanner.nextDouble();
     }
 
-
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return  name.toUpperCase() + "\n" +
+                "miles = " + miles + "\n" +
+                "time = " + time + "\n" +
+                "elevation = " + elevation + "\n" +
+                "difficulty = " + difficulty + "\n" +
+                "isLoop = " + isLoop + "\n" +
+                "kidFriendly = " + kidFriendly;
     }
 }

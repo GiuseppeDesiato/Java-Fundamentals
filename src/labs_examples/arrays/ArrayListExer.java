@@ -39,6 +39,7 @@ public class ArrayListExer {
             System.out.println(s);
         }
 
+        System.out.println(arrayList.get(1));
 
     }
 }
