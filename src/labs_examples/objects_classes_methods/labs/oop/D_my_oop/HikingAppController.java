@@ -68,12 +68,11 @@ public class HikingAppController {
                             }
                             System.out.println("");
                             System.out.println("Please select a trail number: ");
-                            String trailNum = scanner.next();
+                            int trailNum = scanner.nextInt();
                             System.out.println(" ");
                             System.out.println("You have selected: ");
-                            if (trailNum.equals("1")){
-                                System.out.println(trailDatabase.easyTrails.get(0));
-                            }
+                            System.out.println(trailDatabase.easyTrails.get(trailNum));
+
 
                         } else if (trail.isModerate()) {
                             int counter = 1;
@@ -83,8 +82,10 @@ public class HikingAppController {
                             }
                             System.out.println("");
                             System.out.println("Please select a trail number: ");
-                            String trailNum = scanner.next();
+                            int trailNum = scanner.nextInt();
                             System.out.println(" ");
+                            System.out.println("You have selected: ");
+                            System.out.println(trailDatabase.modTrails.get(trailNum));
 
                         } else {
                             int counter = 1;
@@ -94,8 +95,10 @@ public class HikingAppController {
                             }
                             System.out.println("");
                             System.out.println("Please select a trail number: ");
-                            String trailNum = scanner.next();
+                            int trailNum = scanner.nextInt();
                             System.out.println(" ");
+                            System.out.println("You have selected: ");
+                            System.out.println(trailDatabase.hardTrails.get(trailNum));
                         }
                         break;
                     }
