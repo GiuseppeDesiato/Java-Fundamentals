@@ -51,7 +51,8 @@ public class HikingAppController {
                     System.out.println("Now, let's narrow down your preferences for today's hike.");
                     System.out.println(" ");
 
-                    while (true) {
+                    boolean trailMenu = true;
+                    while (trailMenu) {
                         System.out.println("------------");
                         System.out.println("TRAILS MENU:");
                         System.out.println("------------");
@@ -60,6 +61,8 @@ public class HikingAppController {
 
                         if (!(trail.difficulty.equals("1") || trail.difficulty.equals("2") || trail.difficulty.equals("3"))) {
                             System.out.println("Wrong answer. Please type easy, moderate or hard.");
+
+                        //easy trail selection
                         } else if (trail.isEasy()) {
                             int counter = 1;
                             for (Trail t : trailDatabase.easyTrails) {
@@ -72,8 +75,16 @@ public class HikingAppController {
                             System.out.println(" ");
                             System.out.println("You have selected: ");
                             System.out.println(trailDatabase.easyTrails.get(trailNum));
+                            System.out.println("");
+                            System.out.println("Do you want to select another trail?");
+                            String answ = scanner.next();
+                            if (answ.equals("no")){
+                                trailMenu = false;
+                            } else {
+                                trailMenu = true;
+                            }
 
-
+                        //moderate trail selection
                         } else if (trail.isModerate()) {
                             int counter = 1;
                             for (Trail t : trailDatabase.modTrails) {
@@ -86,7 +97,16 @@ public class HikingAppController {
                             System.out.println(" ");
                             System.out.println("You have selected: ");
                             System.out.println(trailDatabase.modTrails.get(trailNum));
+                            System.out.println("");
+                            System.out.println("Do you want to select another trail?");
+                            String answ = scanner.next();
+                            if (answ.equals("no")){
+                                trailMenu = false;
+                            } else {
+                                trailMenu = true;
+                            }
 
+                        //hard trail selection
                         } else {
                             int counter = 1;
                             for (Trail t : trailDatabase.hardTrails) {
@@ -99,8 +119,15 @@ public class HikingAppController {
                             System.out.println(" ");
                             System.out.println("You have selected: ");
                             System.out.println(trailDatabase.hardTrails.get(trailNum));
+                            System.out.println("");
+                            System.out.println("Do you want to select another trail?");
+                            String answ = scanner.next();
+                            if (answ.equals("no")){
+                                trailMenu = false;
+                            } else {
+                                trailMenu = true;
+                            }
                         }
-                        break;
                     }
                     break;
 
@@ -122,31 +149,5 @@ public class HikingAppController {
 
             }
         } while(displayMenu);
-
-
-        System.out.println(" ");
-        System.out.println("Thank you!");
-        System.out.println("Now, let's narrow down your preferences for today's hike");
-        System.out.println(" ");
-
-        while (true) {
-            System.out.println("Difficulty: (easy / moderate / hard)");
-            trail.difficulty = scanner.next().toLowerCase();
-            if (!(trail.difficulty.equals("easy") || trail.difficulty.equals("moderate") || trail.difficulty.equals("hard"))) {
-                System.out.println("Wrong answer. Please type easy, moderate or hard.");
-            } else {
-                break;
-            }
-        }
-
-        if (trail.isEasy()) {
-            trailDatabase.printEasyTrails();
-        } else if (trail.isModerate()) {
-            trailDatabase.printModTrails();
-        } else {
-            trailDatabase.printHardTrails();
-        }
-
     }
-
 }

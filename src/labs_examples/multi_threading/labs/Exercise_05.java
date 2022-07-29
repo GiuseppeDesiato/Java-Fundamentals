@@ -27,7 +27,7 @@ class Exercise_05 {
 
 class RunT_01 implements Runnable {
     Thread thread;
-    FoodProcess foodProcess = new FoodProcess();
+    FoodProcess_02 foodProcess = new FoodProcess_02();
 
     @Override
     public void run() {
@@ -41,7 +41,7 @@ class RunT_01 implements Runnable {
 
 class RunT_02 implements Runnable {
     Thread thread;
-    FoodProcess foodProcess = new FoodProcess();
+    FoodProcess_02 foodProcess = new FoodProcess_02();
 
     @Override
     public void run() {
