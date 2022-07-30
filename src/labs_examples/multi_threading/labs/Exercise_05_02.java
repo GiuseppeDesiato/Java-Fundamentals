@@ -24,9 +24,11 @@ class Exercise_05_02 {
         t2.thread = new Thread(t2, "Eat");
         t2.thread.start();
 
-        // These are unnecessary, but harmless
+        /*
+        These are unnecessary, but harmless
         t1.thread.join();
         t2.thread.join();
+         */
 
     }
 }

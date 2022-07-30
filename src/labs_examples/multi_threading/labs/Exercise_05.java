@@ -31,11 +31,7 @@ class RunT_01 implements Runnable {
 
     @Override
     public void run() {
-        try {
-            foodProcess.buy();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        foodProcess.buy();
     }
 }
 
@@ -45,10 +41,6 @@ class RunT_02 implements Runnable {
 
     @Override
     public void run() {
-        try {
-            foodProcess.eat();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        foodProcess.eat();
     }
 }
