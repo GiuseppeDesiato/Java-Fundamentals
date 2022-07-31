@@ -81,4 +81,5 @@ public class Trail {
                 "isLoop = " + isLoop + "\n" +
                 "kidFriendly = " + kidFriendly;
     }
+
 }

@@ -133,6 +133,21 @@ public class HikingAppController {
 
                 case "2":
                     System.out.println("2. add a trail");
+
+                    boolean trailAdd = true;
+                    while (trailAdd) {
+                        System.out.println("Please select a difficulty: ");
+                        System.out.println("1 (easy) / 2 (moderate) / 3 (hard)");
+                        trail.difficulty = scanner.next().toLowerCase();
+
+                        if (!(trail.difficulty.equals("1") || trail.difficulty.equals("2") || trail.difficulty.equals("3"))) {
+                            System.out.println("Wrong answer. Please type easy, moderate or hard.");
+
+                        } else if (trail.isEasy()) {
+                            String tName = scanner.next();
+                          //trailDatabase.easyTrails.add()
+                            }
+                        }
                     break;
                 case "3":
                     System.out.println("3. update trail info");

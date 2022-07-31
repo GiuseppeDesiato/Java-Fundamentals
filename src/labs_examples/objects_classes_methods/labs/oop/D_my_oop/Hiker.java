@@ -41,9 +41,13 @@ public class Hiker {
                     System.out.println("Name: ");
                     name = scanner.next();
 
-                    System.out.println("Hi" + name + "!" + " how would you define your level of expertise?");
+                    System.out.println("Hi " + name + "!" + " how would you define your level of expertise?");
                     System.out.println("1. (beginner) / 2. (intermediate) / 3 (expert)");
                     String level = scanner.next();
+
+                    System.out.println("Would you like to receive trails' suggestions?");
+                    System.out.println("y / n");
+                    String yesNoAns = scanner.next();
 
                     System.out.println("Great, thank you " +  name + "!");
                     System.out.println(" ");
