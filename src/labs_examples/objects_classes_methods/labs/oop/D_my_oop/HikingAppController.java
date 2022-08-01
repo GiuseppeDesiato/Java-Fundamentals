@@ -74,11 +74,12 @@ public class HikingAppController {
                             int trailNum = scanner.nextInt();
                             System.out.println(" ");
                             System.out.println("You have selected: ");
-                            System.out.println(trailDatabase.easyTrails.get(trailNum));
+                            System.out.println(trailDatabase.easyTrails.get(trailNum - 1));
                             System.out.println("");
                             System.out.println("Do you want to select another trail?");
+                            System.out.println("y/n");
                             String answ = scanner.next();
-                            if (answ.equals("no")){
+                            if (answ.equals("n")){
                                 trailMenu = false;
                             } else {
                                 trailMenu = true;
@@ -96,11 +97,12 @@ public class HikingAppController {
                             int trailNum = scanner.nextInt();
                             System.out.println(" ");
                             System.out.println("You have selected: ");
-                            System.out.println(trailDatabase.modTrails.get(trailNum));
+                            System.out.println(trailDatabase.modTrails.get(trailNum - 1));
                             System.out.println("");
                             System.out.println("Do you want to select another trail?");
+                            System.out.println("y/n");
                             String answ = scanner.next();
-                            if (answ.equals("no")){
+                            if (answ.equals("n")){
                                 trailMenu = false;
                             } else {
                                 trailMenu = true;
@@ -118,11 +120,12 @@ public class HikingAppController {
                             int trailNum = scanner.nextInt();
                             System.out.println(" ");
                             System.out.println("You have selected: ");
-                            System.out.println(trailDatabase.hardTrails.get(trailNum));
+                            System.out.println(trailDatabase.hardTrails.get(trailNum - 1));
                             System.out.println("");
                             System.out.println("Do you want to select another trail?");
+                            System.out.println("y/n");
                             String answ = scanner.next();
-                            if (answ.equals("no")){
+                            if (answ.equals("n")){
                                 trailMenu = false;
                             } else {
                                 trailMenu = true;
