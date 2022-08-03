@@ -8,6 +8,8 @@ public class PowerMain {
         ThreadPow p1 = new ThreadPow(obj);
         ThreadPow p2 = new ThreadPow(obj);
 
+        p1.run();
+        p2.run();
 
     }
 }

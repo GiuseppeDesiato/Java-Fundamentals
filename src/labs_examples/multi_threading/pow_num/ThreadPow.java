@@ -7,10 +7,13 @@ public class ThreadPow implements Runnable{
 
     public ThreadPow(Power power) {
         this.power = power;
+        thread = new Thread("t1");
+        thread.start();
     }
 
     @Override
     public void run(){
+        power.printPower(4);
         System.out.println("I'm in a thread name " + thread.getName() + "!");
     }
 }

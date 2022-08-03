@@ -147,8 +147,11 @@ public class HikingAppController {
                             System.out.println("Wrong answer. Please type easy, moderate or hard.");
 
                         } else if (trail.isEasy()) {
+                            //create a method for adding a trail
                             String tName = scanner.next();
-                          //trailDatabase.easyTrails.add()
+                            //trailDatabase.easyTrails.add();
+                            //name, distance, diffic
+                            //if you have other information
                             }
                         }
                     break;
