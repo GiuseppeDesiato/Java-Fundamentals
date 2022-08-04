@@ -13,7 +13,7 @@ public class ThreadPow implements Runnable{
 
     @Override
     public void run(){
-        power.printPower(4);
         System.out.println("I'm in a thread name " + thread.getName() + "!");
+        power.printPower(4);
     }
 }

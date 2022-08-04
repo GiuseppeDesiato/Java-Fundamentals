@@ -18,12 +18,6 @@ class Exercise_06 {
         p_01.start();
         p_02.start();
 
-        try {
-            p_01.join();
-            p_02.join();
-        } catch(Exception e) {
-            System.out.println("Interrupted");
-        }
     }
 }
 
@@ -34,11 +28,6 @@ class Print100 {
 
         for (int i = 1; i <= 10; i++) {
             System.out.println(msg + i);
-            try {
-                Thread.sleep(50);
-            } catch(Exception e){
-                System.out.println(e);
-            }
         }
     }
 }
@@ -56,10 +45,10 @@ class PrintThread_01 extends Thread {
 
     @Override
     public void run() {
-        synchronized (p100) {
+        synchronized (this) {
             p100.print100(msg);
             try {
-                p100.wait();
+                wait();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -80,10 +69,10 @@ class PrintThread_02 extends Thread {
 
     @Override
     public void run() {
-        synchronized (p100) {
+        synchronized (this) {
             p100.print100(msg);
             try {
-                p100.wait();
+                wait();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
