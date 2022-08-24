@@ -47,8 +47,12 @@ class Truck extends Vehicle {
     }
 
     // Accessor methods for cargocap.
-    int getCargo() { return cargocap; }
-    void putCargo(int c) { cargocap = c; }
+    int getCargo() {
+        return cargocap;
+    }
+    void putCargo(int c) {
+        cargocap = c;
+    }
 }
 
 class TruckDemo {
