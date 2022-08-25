@@ -11,6 +11,10 @@ public class Vehicle {
         this.manufacturingDate = manufacturingDate;
     }
 
+    public double leftRange (double currentSpeed, double maxSpeed){
+        return maxSpeed - currentSpeed;
+    }
+
     public double getCurrentSpeed() {
         return currentSpeed;
     }
