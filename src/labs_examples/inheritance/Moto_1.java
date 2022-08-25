@@ -9,6 +9,13 @@ public class Moto_1 extends Vehicle {
         this.frameSize = frameSize;
     }
 
+    @Override
+    public String toString() {
+        return "Moto_1 {" +
+                "frameSize = " + frameSize + " ," +
+                 super.toString();
+    }
+
     public int getFrameSize() {
         return frameSize;
     }

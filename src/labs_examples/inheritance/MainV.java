@@ -10,7 +10,12 @@ public class MainV {
         car_1.setCurrentSpeed(178.89);
         car_1.setMaxSpeed(230.10);
         double leftSpeed = car_1.leftRange(car_1.getCurrentSpeed(), car_1.getMaxSpeed());
-        System.out.println(leftSpeed);
+        System.out.println("The car has left " + leftSpeed + " of speed acceleration.");
+
+        System.out.println("The brand of the car is: " + car_1.getMotor());
+
+        moto_1.setFrameSize(46);
+        System.out.println(moto_1.toString());
 
     }
 }

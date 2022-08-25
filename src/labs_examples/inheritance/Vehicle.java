@@ -11,6 +11,15 @@ public class Vehicle {
         this.manufacturingDate = manufacturingDate;
     }
 
+    @Override
+    public String toString() {
+        return
+                "currentSpeed = " + currentSpeed +
+                ", maxSpeed = " + maxSpeed +
+                ", manufacturingDate = '" + manufacturingDate + '\'' +
+                '}';
+    }
+
     public double leftRange (double currentSpeed, double maxSpeed){
         return maxSpeed - currentSpeed;
     }
