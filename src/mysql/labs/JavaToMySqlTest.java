@@ -26,8 +26,21 @@ public class JavaToMySqlTest {
             // Statements allow to issue SQL queries to the database
             statement = connection.createStatement();
 
-            String sql = passenger.createPassenger("mar", "mor", "marmor@mail.com");
+            /*
+            String sql = passenger.createPassenger("car", "mor", "marmor@mail.com");
             statement.executeUpdate(sql);
+             */
+
+           /*
+            String sql2 = passenger.deletePassenger(22);
+            statement.executeUpdate(sql2);
+            System.out.println("passenger deleted");
+
+            */
+
+            String sql3 = passenger.updatePassenger("mec", "mat", "mecmat@mail.com", 17);
+            statement.executeUpdate(sql3);
+
 
             /*
             String sql = "INSERT INTO AirTravel.passengers (first_name, last_name, email) VALUES ('mic', 'col', 'miccol@mail.com')";
@@ -50,9 +63,10 @@ public class JavaToMySqlTest {
                 int id = resultSet.getInt("id");
                 String first_name = resultSet.getString("first_name");
                 String last_name = resultSet.getString("last_name");
+                String email = resultSet.getString("email");
 
                 // print out the result
-                System.out.println("Passenger " + id + " is " + first_name + " " + last_name);
+                System.out.println("Passenger " + id + ": " + first_name + " " + last_name + " ---- " + email);
             }
 
         } catch (SQLException exc) {
