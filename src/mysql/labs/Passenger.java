@@ -23,4 +23,9 @@ public class Passenger {
         return sql;
     }
 
+    public String queryPassenger(int  id){
+        String sql = "Select AirTravel.passengers WHERE (`id` = " + "'" + id + "'" + ")";
+        return sql;
+    }
+
 }
