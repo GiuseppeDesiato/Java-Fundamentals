@@ -2,7 +2,7 @@ package labs_examples.objects_classes_methods.labs.oop.D_my_oop;
 
 import java.sql.*;
 
-public class AppToMySql {
+class AppToMySql {
 
     public static void main(String[] args) {
         Connection connection = null;
@@ -61,7 +61,7 @@ public class AppToMySql {
                 String trail_difficulty = resultSet.getString("trail_difficulty");
 
                 // print out the result
-                System.out.println("Trail" + trail_id + ": " + trail_name + " " + trail_miles + " ---- " + trail_difficulty);
+                System.out.println("Trail " + trail_id + ": " + trail_name + " -- " + trail_miles + " miles -- " + trail_difficulty);
             }
 
         } catch (SQLException exc) {
@@ -82,3 +82,4 @@ public class AppToMySql {
         }
     }
 }
+
