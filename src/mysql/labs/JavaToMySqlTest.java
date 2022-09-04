@@ -38,7 +38,7 @@ public class JavaToMySqlTest {
 
             */
 
-            String sql3 = passenger.updatePassenger("mec", "mat", "mecmat@mail.com", 17);
+            String sql3 = passenger.updatePassenger("mic", "mat", "mecmat@mail.com", 17);
             statement.executeUpdate(sql3);
 
 

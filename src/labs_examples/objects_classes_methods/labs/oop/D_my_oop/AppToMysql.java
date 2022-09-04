@@ -9,6 +9,8 @@ class AppToMySql {
         Statement statement = null;
         ResultSet resultSet = null;
 
+        TrailMysql trailMysql = new TrailMysql();
+
 
         try {
             // This will load the MySQL driver, each DB has its own driver
@@ -24,26 +26,10 @@ class AppToMySql {
             // Statements allow to issue SQL queries to the database
             statement = connection.createStatement();
 
-            /*
-            String sql = passenger.createPassenger("car", "mor", "marmor@mail.com");
-            statement.executeUpdate(sql);
-             */
 
-           /*
-            String sql2 = passenger.deletePassenger(22);
-            statement.executeUpdate(sql2);
-            System.out.println("passenger deleted");
-
-            */
-
-
-            /*
-            String sql = "INSERT INTO AirTravel.passengers (first_name, last_name, email) VALUES ('mic', 'col', 'miccol@mail.com')";
+            String sql = trailMysql.updateTrail(0, 8);
             statement.executeUpdate(sql);
 
-            String sql1 = "INSERT INTO AirTravel.passengers (first_name, last_name, email) VALUES ('san', 'pul', 'sanpul@mail.com')";
-            statement.executeUpdate(sql1);
-            */
 
             // String sql2 = flight.createFlight("lufthansa");
             // statement.executeUpdate(sql2);
@@ -57,7 +43,7 @@ class AppToMySql {
                 // get the id, names fields from the result set and assign them to local variables
                 int trail_id = resultSet.getInt("trail_id");
                 String trail_name = resultSet.getString("trail_name");
-                int trail_miles = resultSet.getInt("trail_miles");
+                double trail_miles = resultSet.getDouble("trail_miles");
                 String trail_difficulty = resultSet.getString("trail_difficulty");
 
                 // print out the result
