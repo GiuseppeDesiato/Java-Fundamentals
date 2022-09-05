@@ -26,13 +26,8 @@ class AppToMySql {
             // Statements allow to issue SQL queries to the database
             statement = connection.createStatement();
 
-
             String sql = trailMysql.updateTrail(0, 8);
             statement.executeUpdate(sql);
-
-
-            // String sql2 = flight.createFlight("lufthansa");
-            // statement.executeUpdate(sql2);
 
             // Result set get the result of the SQL query
             resultSet = statement.executeQuery("select * from SummitApp.trails");
