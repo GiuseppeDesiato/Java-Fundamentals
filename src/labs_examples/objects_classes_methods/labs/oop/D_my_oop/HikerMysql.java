@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class HikerMysql {
 
+    //hiker object
+
     String first_name = null;
     String last_name = null;
     String email = null;
@@ -84,6 +86,4 @@ public class HikerMysql {
             }
         }
     }
-
-
 }

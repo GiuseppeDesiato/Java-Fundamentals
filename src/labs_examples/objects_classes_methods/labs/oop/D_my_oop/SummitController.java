@@ -1,10 +1,14 @@
 package labs_examples.objects_classes_methods.labs.oop.D_my_oop;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class SummitController {
 
-    public static void main(String[] args) {
+    //static Db db;
+
+    public static void main(String[] args) throws SQLException {
 
         System.out.println("WELCOME TO SUMMIT");
         System.out.println("");
@@ -15,11 +19,14 @@ public class SummitController {
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
 
-        HikerMysql hiker = new HikerMysql();
+
         Trail trail = new Trail();
         TrailDatabase trailDatabase = new TrailDatabase();
 
-        hiker.hikerProfile();
+        // db = new DB();
+        Db db = new Db();
+        HikerMysql hiker = new HikerMysql();
+
 
         trailDatabase.addEasyTrails();
         trailDatabase.addModTrails();
@@ -65,10 +72,19 @@ public class SummitController {
                             //easy trail selection
                         } else if (trail.isEasy()) {
                             int counter = 1;
-                            for (Trail t : trailDatabase.easyTrails) {
-                                System.out.println(counter + ":" + t.getName());
-                                counter++;
+                            db.resultSet = db.statement.executeQuery("Select * From SummitApp.trails WHERE (`trail_difficulty` = " + "'easy'" + ")");
+                            while (db.resultSet.next()) {
+
+                                // get the id, names fields from the result set and assign them to local variables
+                                int trail_id = db.resultSet.getInt("trail_id");
+                                String trail_name = db.resultSet.getString("trail_name");
+                                double trail_miles = db.resultSet.getDouble("trail_miles");
+                                String trail_difficulty = db.resultSet.getString("trail_difficulty");
+
+                                // print out the result
+                                System.out.println("Trail " + trail_id + ": " + trail_name + " -- " + trail_miles + " miles -- " + trail_difficulty);
                             }
+
                             System.out.println("");
                             System.out.println("Please select a trail number: ");
                             int trailNum = scanner.nextInt();
