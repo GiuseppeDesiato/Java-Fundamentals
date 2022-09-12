@@ -8,7 +8,7 @@ public class TrailMysql {
     double trail_elevation = 0;
     String trail_difficulty = null;
     boolean is_loop = true;
-    int is_open = 0;
+    boolean is_open = true;
 
 
     public String createTrail(String trail_name, double trail_miles, double trail_elevation,
