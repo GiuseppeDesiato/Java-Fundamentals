@@ -24,6 +24,7 @@ public class SummitController {
 
         db = new Db();
         HikerMysql hiker = new HikerMysql();
+        TrailMysql trailSql = new TrailMysql();
 
 
         String menu1 = "";
@@ -85,28 +86,7 @@ public class SummitController {
                             System.out.println(" ");
                             System.out.println("You have selected: ");
 
-                            db.resultSet = db.statement.executeQuery("Select * From SummitApp.trails WHERE (`trail_id` = " + trail_id_Num + ")");
-                            while (db.resultSet.next()) {
-
-                                // get the id, names fields from the result set and assign them to local variables
-                                int trail_id = db.resultSet.getInt("trail_id");
-                                String trail_name = db.resultSet.getString("trail_name");
-                                double trail_miles = db.resultSet.getDouble("trail_miles");
-                                double trail_elevation = db.resultSet.getDouble("trail_elevation");
-                                String trail_difficulty = db.resultSet.getString("trail_difficulty");
-                                boolean is_loop = db.resultSet.getBoolean("trail_loop");
-                                boolean is_open = db.resultSet.getBoolean("is_open");
-
-                                // print out the result
-                                System.out.println("Trail id " + trail_id + "\n"
-                                        + "Name: " + trail_name + "\n"
-                                        + "Miles: " + trail_miles + " miles" + "\n"
-                                        + "Elevation: " + trail_elevation + "\n"
-                                        + "Difficulty: " +trail_difficulty + "\n"
-                                        + "Loop: " + is_loop + "\n"
-                                        + "Open: " + is_open
-                                );
-                            }
+                            trailSql.selectTrail(trail_id_Num);
 
                             System.out.println(" ");
                             System.out.println("Do you want to select another trail?");
@@ -140,28 +120,7 @@ public class SummitController {
                             System.out.println(" ");
                             System.out.println("You have selected: ");
 
-                            db.resultSet = db.statement.executeQuery("Select * From SummitApp.trails WHERE (`trail_id` = " + trail_id_Num + ")");
-                            while (db.resultSet.next()) {
-
-                                // get the id, names fields from the result set and assign them to local variables
-                                int trail_id = db.resultSet.getInt("trail_id");
-                                String trail_name = db.resultSet.getString("trail_name");
-                                double trail_miles = db.resultSet.getDouble("trail_miles");
-                                double trail_elevation = db.resultSet.getDouble("trail_elevation");
-                                String trail_difficulty = db.resultSet.getString("trail_difficulty");
-                                boolean is_loop = db.resultSet.getBoolean("trail_loop");
-                                boolean is_open = db.resultSet.getBoolean("is_open");
-
-                                // print out the result
-                                System.out.println("Trail id " + trail_id + "\n"
-                                        + "Name: " + trail_name + "\n"
-                                        + "Miles: " + trail_miles + " miles" + "\n"
-                                        + "Elevation: " + trail_elevation + "\n"
-                                        + "Difficulty: " +trail_difficulty + "\n"
-                                        + "Loop: " + is_loop + "\n"
-                                        + "Open: " + is_open
-                                );
-                            }
+                            trailSql.selectTrail(trail_id_Num);
 
                             System.out.println("Do you want to select another trail?");
                             System.out.println("y/n");
@@ -194,28 +153,7 @@ public class SummitController {
                             System.out.println(" ");
                             System.out.println("You have selected: ");
 
-                            db.resultSet = db.statement.executeQuery("Select * From SummitApp.trails WHERE (`trail_id` = " + trail_id_Num + ")");
-                            while (db.resultSet.next()) {
-
-                                // get the id, names fields from the result set and assign them to local variables
-                                int trail_id = db.resultSet.getInt("trail_id");
-                                String trail_name = db.resultSet.getString("trail_name");
-                                double trail_miles = db.resultSet.getDouble("trail_miles");
-                                double trail_elevation = db.resultSet.getDouble("trail_elevation");
-                                String trail_difficulty = db.resultSet.getString("trail_difficulty");
-                                boolean is_loop = db.resultSet.getBoolean("trail_loop");
-                                boolean is_open = db.resultSet.getBoolean("is_open");
-
-                                // print out the result
-                                System.out.println("Trail id " + trail_id + "\n"
-                                        + "Name: " + trail_name + "\n"
-                                        + "Miles: " + trail_miles + " miles" + "\n"
-                                        + "Elevation: " + trail_elevation + "\n"
-                                        + "Difficulty: " +trail_difficulty + "\n"
-                                        + "Loop: " + is_loop + "\n"
-                                        + "Open: " + is_open
-                                );
-                            }
+                            trailSql.selectTrail(trail_id_Num);
 
                             System.out.println("Do you want to select another trail?");
                             System.out.println("y/n");
@@ -231,24 +169,9 @@ public class SummitController {
 
                 case "2":
                     System.out.println("2. add a trail");
+                    String sql = trailSql.userCreateTrail();
+                    db.statement.executeUpdate(sql);
 
-                    boolean trailAdd = true;
-                    while (trailAdd) {
-                        System.out.println("Please select a difficulty: ");
-                        System.out.println("1 (easy) / 2 (moderate) / 3 (hard)");
-                        trail.difficulty = scanner.next().toLowerCase();
-
-                        if (!(trail.difficulty.equals("1") || trail.difficulty.equals("2") || trail.difficulty.equals("3"))) {
-                            System.out.println("Wrong answer. Please type easy, moderate or hard.");
-
-                        } else if (trail.isEasy()) {
-                            //create a method for adding a trail
-                            String tName = scanner.next();
-                            //trailDatabase.easyTrails.add();
-                            //name, distance, diffic
-                            //if you have other information
-                        }
-                    }
                     break;
                 case "3":
                     System.out.println("3. update trail info");
