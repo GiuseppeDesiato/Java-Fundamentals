@@ -28,8 +28,11 @@ public class TrailMysql {
         return sql;
     }
 
-    public String updateTrail(int is_open, int trail_id){
-        String sql = "UPDATE SummitApp.trails SET `is_open` = '" + is_open + "' WHERE (`trail_id` = '" + trail_id + "');";
+    public String updateTrail(String trail_name, double trail_miles, double trail_elevation,
+                              String trail_difficulty, int is_loop, int is_open, int trail_id){
+        String sql = "UPDATE SummitApp.trails SET `trail_name` = '" + trail_name + "', `trail_miles` = '" + trail_miles
+                + "', `trail_elevation` = '" + trail_elevation + "', `trail_difficulty` = '" + trail_difficulty
+                + "', `trail_loop` = '" + is_loop + "', `is_open` = '" + is_open + "' WHERE (`trail_Id` = '" + trail_id + "');";
         return sql;
     }
 
@@ -85,4 +88,43 @@ public class TrailMysql {
         return createTrail(trail_name, trail_miles, trail_elevation, trail_difficulty, trail_loop, is_open);
     }
 
+    public String userUpdateTrail() throws SQLException {
+
+        System.out.println("PLease insert Trail ID: ");
+        int trail_id = scanner.nextInt();
+
+        System.out.println("Thank you");
+        db.resultSet = db.statement.executeQuery("Select * From SummitApp.trails WHERE (`trail_id` = " + trail_id + ")");
+        while (db.resultSet.next()) {
+            String trail_name = db.resultSet.getString("trail_name");
+
+            // print out the result
+            System.out.println("You have selected the " + trail_name + " trail.");
+        }
+
+        System.out.println("please update the following values: " + "\n");
+        System.out.println("Trail Name: ");
+        scanner.nextLine();
+        String trail_name = scanner.nextLine();
+
+        System.out.println("Miles: ");
+        double trail_miles = scanner.nextDouble();
+
+        System.out.println("Elevation: ");
+        double trail_elevation = scanner.nextDouble();
+
+        System.out.println("Difficulty: easy / moderate / hard ");
+        String trail_difficulty = scanner.next();
+
+        System.out.println("Is the trail a loop? 1 = yes, 0 = no ");
+        int is_loop = scanner.nextInt();
+
+        System.out.println("Is this trail open? (1 = yes, 0 = no)");
+        int is_open = scanner.nextInt();
+
+        System.out.println("Thank you! The user was updated successfully." + "\n");
+
+        String sqlUpdate = updateTrail(trail_name, trail_miles, trail_elevation, trail_difficulty, is_loop, is_open, trail_id);
+        return String.valueOf(db.statement.executeUpdate(sqlUpdate));
+    }
 }

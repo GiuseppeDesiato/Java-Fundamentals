@@ -1,6 +1,9 @@
 package labs_examples.objects_classes_methods.labs.oop.D_my_oop;
 
+import java.sql.SQLException;
 import java.util.Scanner;
+
+import static labs_examples.objects_classes_methods.labs.oop.D_my_oop.SummitController.db;
 
 public class HikerMysql {
 
@@ -23,21 +26,17 @@ public class HikerMysql {
         return sql;
     }
 
-    public String updateHiker(String first_name, String last_name, String email){
-        String sql = "UPDATE SummitApp.hikers SET `first_name` = '" + first_name  + "',`last_name` = '" + last_name + "',`email` = '" + email  + "' WHERE (`email` = '" + email +  "');";
+    public String updateHiker(String first_name, String last_name, String email, int id){
+        String sql = "UPDATE SummitApp.hikers SET `first_name` = '" + first_name  + "',`last_name` = '" + last_name + "',`email` = '" + email + "' WHERE (id = '" + id + "');";
         return sql;
     }
 
 
-    public void hikerProfile() {
-
-        boolean isDone = true;
-        while (isDone) {
+    public String hikerProfile() throws SQLException {
 
             System.out.println("1. Create a new user profile.");
             System.out.println("2. Returning user");
             input = scanner.next();
-
 
             switch (input) {
                 case "1":
@@ -52,22 +51,11 @@ public class HikerMysql {
                     System.out.println("email: ");
                     String email = scanner.next();
 
-                    createHiker(first_name, last_name, email);
-
-
-                    System.out.println("Hi " + first_name + "!" + " how would you define your level of expertise?");
-                    System.out.println("1. (beginner) / 2. (intermediate) / 3 (expert)");
-                    String level = scanner.next();
-
-                    System.out.println("Would you like to receive trails' suggestions?");
-                    System.out.println("y / n");
-                    String yesNoAns = scanner.next();
-
                     System.out.println("Great, thank you " +  first_name + "!");
                     System.out.println(" ");
 
-                    isDone = false;
-                    break;
+                    String sqlUser = createHiker(first_name, last_name, email);
+                    return String.valueOf(db.statement.executeUpdate(sqlUser));
 
                 case "2":
                     System.out.println("Returning User");
@@ -75,15 +63,43 @@ public class HikerMysql {
                     System.out.println("Name: ");
                     first_name = scanner.next();
 
-                    System.out.println("Hi " +  first_name + "!" + " Welcome back!");
-                    System.out.println(" ");
+                    System.out.println("Hi " +  first_name + "!" + " Welcome back!" + "\n");
 
-                    isDone = false;
                     break;
 
                 default:
                     System.out.println("Please choose between option 1 or 2.");
             }
+        return null;
+    }
+
+    public String userUpdateProfile() throws SQLException {
+
+        System.out.println("Please insert the USER ID: ");
+        int id = scanner.nextInt();
+        System.out.println("Thank you");
+
+        db.resultSet = db.statement.executeQuery("Select * From SummitApp.hikers WHERE (id = " + "'" + id + "');");
+        while (db.resultSet.next()) {
+            String first_name = db.resultSet.getString("first_name");
+            String last_name = db.resultSet.getString("last_name");
+
+            // print out the result
+            System.out.println("You have selected " + first_name + " " + last_name);
         }
+        System.out.println("please update the following values:");
+        System.out.println(" ");
+        System.out.println("First Name: ");
+        String first_name = scanner.next();
+
+        System.out.println("Last Name: ");
+        String last_name = scanner.next();
+
+        System.out.println("email: ");
+        String email = scanner.next();
+
+        System.out.println("Thank you! The user was updated successfully." + "\n");
+
+        return updateHiker(first_name, last_name, email, id);
     }
 }

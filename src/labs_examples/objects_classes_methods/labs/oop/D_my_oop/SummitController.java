@@ -10,8 +10,7 @@ public class SummitController {
 
     public static void main(String[] args) throws SQLException {
 
-        System.out.println("WELCOME TO SUMMIT");
-        System.out.println("");
+        System.out.println("WELCOME TO SUMMIT" + "\n");
         System.out.println("-----------");
         System.out.println("Press ENTER");
         System.out.println("-----------");
@@ -21,11 +20,12 @@ public class SummitController {
 
         Trail trail = new Trail();
 
-
         db = new Db();
-        HikerMysql hiker = new HikerMysql();
+        HikerMysql hikerSql = new HikerMysql();
         TrailMysql trailSql = new TrailMysql();
 
+        //create user or returning user
+        hikerSql.hikerProfile();
 
         String menu1 = "";
         boolean displayMenu = true;
@@ -41,17 +41,14 @@ public class SummitController {
             System.out.println("4. update hiker profile");
             System.out.println("5. quit");
 
-            System.out.println("Please selece a number. (1-5)");
+            System.out.println("Please selece a number. (1-5)" + "\n");
             menu1 = scanner.next();
 
             switch(menu1) {
                 case "1":
-                    System.out.println("1. explore trails");
-                    System.out.println(" ");
-                    System.out.println("Thank you!");
-                    System.out.println(" ");
-                    System.out.println("Now, let's narrow down your preferences for today's hike.");
-                    System.out.println(" ");
+                    System.out.println("1. explore trails" + "\n");
+                    System.out.println("Thank you!" + "\n");
+                    System.out.println("Now, let's narrow down your preferences for today's hike." + "\n");
 
                     boolean trailMenu = true;
                     while (trailMenu) {
@@ -114,7 +111,7 @@ public class SummitController {
                                 System.out.println("Trail " + trail_id + ": " + trail_name + " -- " + trail_miles + " miles -- " + trail_difficulty);
                             }
 
-                            System.out.println("");
+                            System.out.println(" ");
                             System.out.println("Please select a trail number: ");
                             int trail_id_Num = scanner.nextInt();
                             System.out.println(" ");
@@ -122,6 +119,7 @@ public class SummitController {
 
                             trailSql.selectTrail(trail_id_Num);
 
+                            System.out.println(" ");
                             System.out.println("Do you want to select another trail?");
                             System.out.println("y/n");
                             String answ = scanner.next();
@@ -155,6 +153,7 @@ public class SummitController {
 
                             trailSql.selectTrail(trail_id_Num);
 
+                            System.out.println(" ");
                             System.out.println("Do you want to select another trail?");
                             System.out.println("y/n");
                             String answ = scanner.next();
@@ -175,9 +174,14 @@ public class SummitController {
                     break;
                 case "3":
                     System.out.println("3. update trail info");
+                    trailSql.userUpdateTrail();
+
                     break;
                 case "4":
                     System.out.println("4. update hiker profile");
+                    String sqlUpH = hikerSql.userUpdateProfile();
+                    db.statement.executeUpdate(sqlUpH);
+
                     break;
                 case "5":
                     System.out.println("5. quit");
