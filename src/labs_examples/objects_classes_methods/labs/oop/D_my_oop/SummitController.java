@@ -21,6 +21,7 @@ public class SummitController {
         Trail trail = new Trail();
 
         db = new Db();
+        db.openDB();
         HikerMysql hikerSql = new HikerMysql();
         TrailMysql trailSql = new TrailMysql();
 
@@ -192,6 +193,8 @@ public class SummitController {
 
             }
         } while(displayMenu);
+
+        db.closeDB();
     }
 }
 
